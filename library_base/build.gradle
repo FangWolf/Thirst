@@ -1,0 +1,42 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 28
+
+
+
+    defaultConfig {
+        minSdkVersion 24
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api rootProject.ext.support["appcompat-v7"]
+    api rootProject.ext.support["support-v4"]
+    api rootProject.ext.support["constraint-layout"]
+    api project(':library_res')
+
+    api rootProject.ext.dependencies["arouter-api"]
+    api rootProject.ext.dependencies["logger"]
+    api rootProject.ext.dependencies["eventbus"]
+    api rootProject.ext.dependencies["permissionsdispatcher"]
+    annotationProcessor rootProject.ext.dependencies["permissionsdispatcher-processor"]
+    api rootProject.ext.dependencies["BaseRecyclerViewAdapterHelper"]
+}
