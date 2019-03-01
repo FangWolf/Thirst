@@ -35,6 +35,7 @@ dependencies {
 
     api rootProject.ext.dependencies["arouter-api"]
     api rootProject.ext.dependencies["logger"]
+    api rootProject.ext.dependencies["autosize"]
     api rootProject.ext.dependencies["eventbus"]
     api rootProject.ext.dependencies["permissionsdispatcher"]
     annotationProcessor rootProject.ext.dependencies["permissionsdispatcher-processor"]
