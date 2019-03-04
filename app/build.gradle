@@ -56,5 +56,7 @@ dependencies {
         implementation project(':module_main')
         //登录注册组件
         implementation project(':module_login')
+        //我的组件
+        implementation project(':module_mine')
     }
 }

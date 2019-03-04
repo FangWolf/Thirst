@@ -28,6 +28,7 @@ android {
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
+    api rootProject.ext.support["legacy"]
     api rootProject.ext.support["appcompat-v7"]
     api rootProject.ext.support["support-v4"]
     api rootProject.ext.support["constraint-layout"]
