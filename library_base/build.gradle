@@ -32,6 +32,7 @@ dependencies {
     api rootProject.ext.support["appcompat-v7"]
     api rootProject.ext.support["support-v4"]
     api rootProject.ext.support["constraint-layout"]
+    api rootProject.ext.support["design"]
     api project(':library_res')
 
     api rootProject.ext.dependencies["arouter-api"]

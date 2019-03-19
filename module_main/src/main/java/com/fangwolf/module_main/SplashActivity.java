@@ -3,9 +3,13 @@ package com.fangwolf.module_main;
 import android.os.Bundle;
 import android.view.View;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.fangwolf.library_base.base.BaseActivity;
+import com.fangwolf.library_base.router.RouterActivityPath;
+import com.fangwolf.library_base.utils.SPUtils;
 import com.fangwolf.library_base.widget.RxTimer;
 import com.fangwolf.module_main.databinding.MainActivitySplashBinding;
+import com.orhanobut.logger.Logger;
 
 /**
  * @Auther 獠牙血狼
@@ -14,6 +18,7 @@ import com.fangwolf.module_main.databinding.MainActivitySplashBinding;
  */
 public class SplashActivity extends BaseActivity<MainActivitySplashBinding> {
     private RxTimer rxTimer;
+    private boolean canAutoLogin = false;
 
     @Override
     protected int setLayoutID() {
@@ -22,12 +27,14 @@ public class SplashActivity extends BaseActivity<MainActivitySplashBinding> {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
+        if (!SPUtils.getInstance().getString("SESSION").isEmpty()) {
+            canAutoLogin = true;
+        }
     }
 
     @Override
     protected void initData(Bundle savedInstanceState) {
-        rxTimer.bindAct(this);
-        rxTimer = new RxTimer(3, 1, new RxTimer.TimerCall() {
+        rxTimer = new RxTimer(1, 3, new RxTimer.TimerCall() {
             @Override
             public void onTick(long t) {
                 BD.tvTime.setText(String.valueOf(t));
@@ -35,10 +42,28 @@ public class SplashActivity extends BaseActivity<MainActivitySplashBinding> {
 
             @Override
             public void onFinish() {
-
+                needToLogin();
             }
         });
         rxTimer.start();
+    }
+
+    private void needToLogin() {
+        if (canAutoLogin) {
+            ARouter.getInstance()
+                    .build(RouterActivityPath.Main.MAIN)
+                    .navigation();
+        } else {
+            ARouter.getInstance()
+                    .build(RouterActivityPath.Login.LOGIN)
+                    .navigation();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        RxTimer.destoryTimer(rxTimer);
     }
 
     @Override

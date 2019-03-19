@@ -8,17 +8,15 @@ import com.fangwolf.library_base.base.BaseActivity;
 import com.fangwolf.library_base.router.RouterActivityPath;
 import com.fangwolf.module_main.databinding.MainActivityMainBinding;
 
-import androidx.core.content.ContextCompat;
 import me.majiajie.pagerbottomtabstrip.NavigationController;
-import me.majiajie.pagerbottomtabstrip.PageNavigationView;
 
-@Route(path = RouterActivityPath.Main.PAGE_MAIN)
+@Route(path = RouterActivityPath.Main.MAIN)
 public class MainActivity extends BaseActivity<MainActivityMainBinding> {
     @Override
     protected int setLayoutID() {
         return R.layout.main_activity_main;
     }
-    
+
     @Override
     protected void initView(Bundle savedInstanceState) {
         initBottomTab();

@@ -11,18 +11,20 @@ public class RouterActivityPath {
      * 登录注册组件
      */
     public static class Login {
-        private static final String LOGIN = "/Login";
-        /*登录页面*/
-        public static final String PAGE_LOGIN = LOGIN + "/login";
+        private static final String LOGIN_BASE = "/Login";
+        //登录页面
+        public static final String LOGIN = LOGIN_BASE + "/login";
+        //注册
+        public static final String REGISTER = LOGIN_BASE + "/register";
     }
 
     /**
      * 壳的组件
      */
     public static class Main {
-        private static final String MAIN = "/Main";
-        /*登录页面*/
-        public static final String PAGE_MAIN = MAIN + "/main";
+        private static final String MAIN_BASE = "/Main";
+        //主页
+        public static final String MAIN = MAIN_BASE + "/main";
     }
 
 }

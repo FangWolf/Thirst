@@ -14,7 +14,7 @@ import com.fangwolf.module_login.databinding.LoginActivityLoginBinding;
  * @Date 2019/3/1
  * @Desc 登录
  */
-@Route(path = RouterActivityPath.Login.PAGE_LOGIN)
+@Route(path = RouterActivityPath.Login.LOGIN)
 public class LoginActivity extends BaseActivity<LoginActivityLoginBinding> {
 
     @Override
@@ -24,7 +24,7 @@ public class LoginActivity extends BaseActivity<LoginActivityLoginBinding> {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-
+        setonClickListener(BD.btnBack, BD.btnRegister, BD.btnLogin);
     }
 
     @Override
@@ -34,6 +34,14 @@ public class LoginActivity extends BaseActivity<LoginActivityLoginBinding> {
 
     @Override
     public void onClick(View view) {
-
+        switch (view.getId()) {
+            case R.id.btn_back:
+                finish();
+                break;
+            case R.id.btn_register:
+                break;
+            case R.id.btn_login:
+                break;
+        }
     }
 }
