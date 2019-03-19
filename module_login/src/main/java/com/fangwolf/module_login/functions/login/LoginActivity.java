@@ -1,12 +1,13 @@
 package com.fangwolf.module_login.functions.login;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.fangwolf.library_base.base.BaseActivity;
 import com.fangwolf.library_base.router.RouterActivityPath;
 import com.fangwolf.module_login.R;
-
-import androidx.appcompat.app.AppCompatActivity;
+import com.fangwolf.module_login.databinding.LoginActivityLoginBinding;
 
 /**
  * @Auther 獠牙血狼
@@ -14,11 +15,25 @@ import androidx.appcompat.app.AppCompatActivity;
  * @Desc 登录
  */
 @Route(path = RouterActivityPath.Login.PAGE_LOGIN)
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity<LoginActivityLoginBinding> {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_activity_login);
+    protected int setLayoutID() {
+        return R.layout.login_activity_login;
+    }
+
+    @Override
+    protected void initView(Bundle savedInstanceState) {
+
+    }
+
+    @Override
+    protected void initData(Bundle savedInstanceState) {
+
+    }
+
+    @Override
+    public void onClick(View view) {
+
     }
 }

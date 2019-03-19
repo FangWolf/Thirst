@@ -1,27 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".SplashActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <Button
-        android:id="@+id/btn_test"
-        android:layout_width="400dp"
-        android:layout_height="50dp"
-        android:background="#f00"
-        android:text="开始" />
+    <data>
 
-    <Button
-        android:id="@+id/btn_test2"
-        android:layout_width="20dp"
-        android:layout_height="50dp"
-        android:layout_gravity="end"
-        android:background="#ff0" />
+    </data>
 
-    <Button
-        android:layout_width="50dp"
-        android:layout_height="625dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".SplashActivity">
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/iv_splash"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher" />
+
+    </LinearLayout>
+</layout>

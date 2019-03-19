@@ -36,7 +36,7 @@ ext {
             //日志
             "logger"                         : "com.orhanobut:logger:2.2.0",
             //底部导航栏
-            "pager-bottom-tab-strip"         : 'me.majiajie:pager-bottom-tab-strip:2.3.0x',
+            "pager-bottom-tab-strip"         : 'me.majiajie:pager-bottom-tab-strip:2.3.0X',
             //屏幕适配
             "autosize"                       : 'me.jessyan:autosize:1.1.2',
             //EventBus

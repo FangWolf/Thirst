@@ -10,19 +10,23 @@ import org.greenrobot.eventbus.EventBus;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 
 /**
  * @Auther 獠牙血狼
  * @Date 2019/3/1
  * @Desc 基础activity
  */
-public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
+public abstract class BaseActivity<BindingType extends ViewDataBinding> extends AppCompatActivity implements View.OnClickListener {
+    public BindingType BD;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (setLayoutID() != 0) {
-            setContentView(setLayoutID());
+        int layoutId = setLayoutID();
+        if (layoutId != 0) {
+            BD = DataBindingUtil.setContentView(this, layoutId);
         } else {
             Logger.e("layout ID is null");
         }
