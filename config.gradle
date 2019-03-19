@@ -4,7 +4,7 @@ ext {
             compileSdkVersion: 28,
             buildToolsVersion: "28.0.3",
             applicationId    : "com.fangwolf.thirst",
-            minSdkVersion    : 24,
+            minSdkVersion    : 26,
             targetSdkVersion : 28,
             versionCode      : 1,
             versionName      : "0.1"
@@ -46,5 +46,8 @@ ext {
             "permissionsdispatcher-processor": 'org.permissionsdispatcher:permissionsdispatcher-processor:4.3.0',
             //RV适配器
             "BaseRecyclerViewAdapterHelper"  : 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46',
+            //rx系列
+            "rxjava"                         : 'io.reactivex.rxjava2:rxjava:2.2.7',
+            "rxandroid"                      : 'io.reactivex.rxjava2:rxandroid:2.1.1',
     ]
 }

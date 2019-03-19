@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.fangwolf.library_base.base.BaseActivity;
+import com.fangwolf.library_base.widget.RxTimer;
 import com.fangwolf.module_main.databinding.MainActivitySplashBinding;
 
 /**
@@ -12,6 +13,7 @@ import com.fangwolf.module_main.databinding.MainActivitySplashBinding;
  * @Desc 启动页
  */
 public class SplashActivity extends BaseActivity<MainActivitySplashBinding> {
+    private RxTimer rxTimer;
 
     @Override
     protected int setLayoutID() {
@@ -24,7 +26,19 @@ public class SplashActivity extends BaseActivity<MainActivitySplashBinding> {
 
     @Override
     protected void initData(Bundle savedInstanceState) {
+        rxTimer.bindAct(this);
+        rxTimer = new RxTimer(3, 1, new RxTimer.TimerCall() {
+            @Override
+            public void onTick(long t) {
+                BD.tvTime.setText(String.valueOf(t));
+            }
 
+            @Override
+            public void onFinish() {
+
+            }
+        });
+        rxTimer.start();
     }
 
     @Override
