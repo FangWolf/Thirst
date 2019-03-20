@@ -67,8 +67,10 @@ dependencies {
         implementation project(':module_main')
         //登录注册组件
         implementation project(':module_login')
-        //首页注册组件
+        //首页组件
         implementation project(':module_home')
+        //新闻组件
+        implementation project(':module_news')
         //聊天组件
         implementation project(':module_chat')
         //我的组件
