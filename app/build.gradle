@@ -45,6 +45,13 @@ android {
             }
         }
     }
+
+    configurations.all {
+        resolutionStrategy {
+            force 'androidx.media:media:1.0.0'
+        }
+    }
+    
     //统一资源前缀，规范资源引用
     resourcePrefix "app_"
 }
@@ -60,7 +67,12 @@ dependencies {
         implementation project(':module_main')
         //登录注册组件
         implementation project(':module_login')
+        //首页注册组件
+        implementation project(':module_home')
+        //聊天组件
+        implementation project(':module_chat')
         //我的组件
         implementation project(':module_mine')
+
     }
 }

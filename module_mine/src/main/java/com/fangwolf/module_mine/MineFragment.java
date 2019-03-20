@@ -12,7 +12,7 @@ import com.fangwolf.library_base.router.RouterFragmentPath;
  * @Date 2019/3/4
  * @Desc 我的页面
  */
-@Route(path = RouterFragmentPath.Mine.PAGE_MINE)
+@Route(path = RouterFragmentPath.Mine.MAIN)
 public class MineFragment extends BaseFragment {
 
 

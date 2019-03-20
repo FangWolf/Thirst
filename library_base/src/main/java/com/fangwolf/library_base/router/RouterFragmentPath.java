@@ -8,11 +8,38 @@ package com.fangwolf.library_base.router;
  */
 public class RouterFragmentPath {
     /**
+     * 首页组件
+     */
+    public static class Home {
+        private static final String HOME_BASE = "/Home";
+        /*首页页面*/
+        public static final String MAIN = HOME_BASE + "/home";
+    }
+
+    /**
+     * 新闻组件
+     */
+    public static class News {
+        private static final String NEWS_BASE = "/News";
+        /*新闻页面*/
+        public static final String MAIN = NEWS_BASE + "/news";
+    }
+
+    /**
+     * 聊天组件
+     */
+    public static class Chat {
+        private static final String CHAT_BASE = "/Chat";
+        /*我的页面*/
+        public static final String MAIN = CHAT_BASE + "/chat";
+    }
+
+    /**
      * 我的组件
      */
     public static class Mine {
-        private static final String MINE = "/Mine";
+        private static final String MINE_BASE = "/Mine";
         /*我的页面*/
-        public static final String PAGE_MINE = MINE + "/mine";
+        public static final String MAIN = MINE_BASE + "/mine";
     }
 }

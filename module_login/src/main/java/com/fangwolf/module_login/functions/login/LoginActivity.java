@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.fangwolf.library_base.base.BaseActivity;
 import com.fangwolf.library_base.router.RouterActivityPath;
 import com.fangwolf.module_login.R;
@@ -34,14 +35,15 @@ public class LoginActivity extends BaseActivity<LoginActivityLoginBinding> {
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btn_back:
-                finish();
-                break;
-            case R.id.btn_register:
-                break;
-            case R.id.btn_login:
-                break;
+        int i = view.getId();
+        if (i == R.id.btn_back) {
+            finish();
+        } else if (i == R.id.btn_register) {
+        } else if (i == R.id.btn_login) {
+            ARouter.getInstance()
+                    .build(RouterActivityPath.Main.MAIN)
+                    .navigation();
+            finish();
         }
     }
 }

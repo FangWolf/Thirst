@@ -12,6 +12,14 @@ public class ModuleLifecycleReflexs {
     private static final String MainInit = "com.fangwolf.module_main.MainModuleInit";
     //登录验证模块
     private static final String LoginInit = "com.fangwolf.module_login.LoginModuleInit";
+    //首页模块
+    private static final String HomeInit = "com.fangwolf.module_home.init.HomeModuleInit";
+    //新闻模块
+    private static final String NewsInit = "com.fangwolf.module_news.NewsModuleInit";
+    //聊天模块
+    private static final String ChatInit = "com.fangwolf.module_chat.ChatModuleInit";
+    //我的模块
+    private static final String MineInit = "com.fangwolf.module_mine.MineModuleInit";
 
-    public static String[] initModuleNames = {BaseInit, MainInit, LoginInit};
+    public static String[] initModuleNames = {BaseInit, MainInit, LoginInit, HomeInit, NewsInit, ChatInit, MineInit};
 }

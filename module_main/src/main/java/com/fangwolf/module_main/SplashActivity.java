@@ -58,6 +58,7 @@ public class SplashActivity extends BaseActivity<MainActivitySplashBinding> {
                     .build(RouterActivityPath.Login.LOGIN)
                     .navigation();
         }
+        finish();
     }
 
     @Override
