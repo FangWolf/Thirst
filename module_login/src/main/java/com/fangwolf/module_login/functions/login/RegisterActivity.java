@@ -7,26 +7,26 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.fangwolf.library_base.base.BaseActivity;
 import com.fangwolf.library_base.router.RouterActivityPath;
-import com.fangwolf.library_base.widget.Loading;
 import com.fangwolf.module_login.R;
-import com.fangwolf.module_login.databinding.LoginActivityLoginBinding;
+import com.fangwolf.module_login.databinding.ActivityRegisterBinding;
 
 /**
  * @Auther 獠牙血狼
- * @Date 2019/3/1
- * @Desc 登录
+ * @Date 2019/3/22
+ * @Desc 注册
  */
-@Route(path = RouterActivityPath.Login.LOGIN)
-public class LoginActivity extends BaseActivity<LoginActivityLoginBinding> {
+@Route(path = RouterActivityPath.Login.REGISTER)
+public class RegisterActivity extends BaseActivity<ActivityRegisterBinding> {
 
     @Override
     protected int setLayoutID() {
-        return R.layout.login_activity_login;
+        return R.layout.activity_register;
     }
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-        setonClickListener(BD.btnBack, BD.btnRegister, BD.btnLogin, BD.btnForget);
+        setonClickListener(BD.btnBack, BD.btnRegister);
+
     }
 
     @Override
@@ -41,16 +41,9 @@ public class LoginActivity extends BaseActivity<LoginActivityLoginBinding> {
             finish();
         } else if (i == R.id.btn_register) {
             ARouter.getInstance()
-                    .build(RouterActivityPath.Login.REGISTER)
-                    .navigation();
-        } else if (i == R.id.btn_login) {
-            ARouter.getInstance()
                     .build(RouterActivityPath.Main.MAIN)
                     .navigation();
-            finish();
-        } else if (i == R.id.btn_forget) {
-            Loading loading = new Loading(this);
-            loading.show();
         }
+
     }
 }

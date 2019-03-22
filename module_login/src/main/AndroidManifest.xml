@@ -3,5 +3,6 @@
 
     <application>
         <activity android:name=".functions.login.LoginActivity"></activity>
+        <activity android:name=".functions.login.RegisterActivity"></activity>
     </application>
 </manifest>
