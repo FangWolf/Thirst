@@ -8,6 +8,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.fangwolf.library_base.base.BaseActivity;
 import com.fangwolf.library_base.router.RouterActivityPath;
 import com.fangwolf.library_base.router.RouterFragmentPath;
+import com.fangwolf.library_base.utils.ToastUtils;
 import com.fangwolf.module_main.databinding.MainActivityMainBinding;
 
 import java.util.ArrayList;
@@ -77,6 +78,11 @@ public class MainActivity extends BaseActivity<MainActivityMainBinding> {
         navigationController.addTabItemSelectedListener(new OnTabItemSelectedListener() {
             @Override
             public void onSelected(int index, int old) {
+                if (index == 2) {
+                    ToastUtils.showShort("发布弹窗");
+                } else if (index > 2) {
+                    index -= 1;
+                }
                 Fragment currentFragment = mFragments.get(index);
                 if (currentFragment != null) {
                     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
