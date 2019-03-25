@@ -65,7 +65,7 @@ public class LoginActivity extends BaseActivity<LoginActivityLoginBinding> {
 
     private void beforeLogin(String userName, String passWord) {
         if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(passWord)) {
-            ToastUtils.showShort("请输检查输入");
+            ToastUtils.showShort("请输入完整");
         } else {
             Login(userName, passWord);
         }

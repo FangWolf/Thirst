@@ -18,7 +18,8 @@ import com.orhanobut.logger.Logger;
  */
 public class SplashActivity extends BaseActivity<MainActivitySplashBinding> {
     private RxTimer rxTimer;
-    private boolean canAutoLogin = false;
+    // TODO: 2019/3/25
+    private boolean canAutoLogin = true;
 
     @Override
     protected int setLayoutID() {

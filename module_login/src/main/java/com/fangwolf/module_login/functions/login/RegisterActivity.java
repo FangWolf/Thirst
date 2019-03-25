@@ -63,7 +63,7 @@ public class RegisterActivity extends BaseActivity<ActivityRegisterBinding> {
      */
     private void beforeRegister(String userName, String passWord, String checkPass) {
         if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(passWord) || TextUtils.isEmpty(checkPass)) {
-            ToastUtils.showShort("请输检查输入");
+            ToastUtils.showShort("请输入完整");
         } else if (!passWord.equals(checkPass)) {
             ToastUtils.showShort("密码输入不一致");
         } else {
