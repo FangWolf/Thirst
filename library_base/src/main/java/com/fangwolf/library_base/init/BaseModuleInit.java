@@ -8,6 +8,8 @@ import com.fangwolf.library_base.utils.Utils;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 
+import cn.bmob.v3.Bmob;
+
 /**
  * @Auther 獠牙血狼
  * @Date 2019/3/1
@@ -24,7 +26,10 @@ public class BaseModuleInit implements IModuleInit {
             ARouter.openDebug();   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
         }
         ARouter.init(application); // 尽可能早，推荐在Application中初始化
+        //工具包
         Utils.init(application);
+        //Bmob后台
+        Bmob.initialize(application, "1b036b67ee48d087a3c0ed4929389688");
         Logger.e("基础层初始化 -- onInitAhead");
         return false;
     }

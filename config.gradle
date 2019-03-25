@@ -46,8 +46,13 @@ ext {
             "permissionsdispatcher-processor": 'org.permissionsdispatcher:permissionsdispatcher-processor:4.3.0',
             //RV适配器
             "BaseRecyclerViewAdapterHelper"  : 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46',
+            //bmob后台需要以下和rxJava、rxAndroid
+            "bmob"                           : 'cn.bmob.android:bmob-sdk:3.7.0',
+            "okio"                           : 'com.squareup.okio:okio:2.1.0',
+            "gson"                           : 'com.google.code.gson:gson:2.8.5',
+            "okhttp"                         : 'com.squareup.okhttp3:okhttp:3.12.0',
             //rx系列
-            "rxjava"                         : 'io.reactivex.rxjava2:rxjava:2.2.7',
-            "rxandroid"                      : 'io.reactivex.rxjava2:rxandroid:2.1.1',
+            "rxjava"                         : 'io.reactivex.rxjava2:rxjava:2.2.2',
+            "rxandroid"                      : 'io.reactivex.rxjava2:rxandroid:2.1.0',
     ]
 }

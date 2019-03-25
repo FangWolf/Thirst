@@ -27,6 +27,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".functions.login.RegisterActivity"></activity>
+
+        <provider
+            android:name="cn.bmob.v3.util.BmobContentProvider"
+            android:authorities="com.fangwolf.login.BmobContentProvider" />
     </application>
 
 </manifest>
