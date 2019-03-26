@@ -1,4 +1,4 @@
-package com.fangwolf.module_mine;
+package com.fangwolf.module_chat;
 
 
 import android.view.View;
@@ -6,19 +6,19 @@ import android.view.View;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.fangwolf.library_base.base.BaseFragment;
 import com.fangwolf.library_base.router.RouterFragmentPath;
-import com.fangwolf.module_mine.databinding.MineFragmentMineBinding;
+import com.fangwolf.module_chat.databinding.ChatFragmentChatBinding;
 
 /**
  * @Auther 獠牙血狼
- * @Date 2019/3/4
- * @Desc 我的页面
+ * @Date 2019/3/20
+ * @Desc 聊天
  */
-@Route(path = RouterFragmentPath.Mine.MAIN)
-public class MineFragment extends BaseFragment<MineFragmentMineBinding> {
+@Route(path = RouterFragmentPath.Chat.MAIN)
+public class ChatFragment extends BaseFragment<ChatFragmentChatBinding> {
 
     @Override
     public int getLayoutId() {
-        return R.layout.mine_fragment_mine;
+        return R.layout.chat_fragment_chat;
     }
 
     @Override

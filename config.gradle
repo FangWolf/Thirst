@@ -35,6 +35,9 @@ ext {
             "arouter-compiler"               : "com.alibaba:arouter-compiler:1.2.2",
             //日志
             "logger"                         : "com.orhanobut:logger:2.2.0",
+            //内存泄漏
+            "leakcanary-android"             : 'com.squareup.leakcanary:leakcanary-android:1.6.3',
+            "leakcanary-android-no-op"       : 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3',
             //底部导航栏
             "pager-bottom-tab-strip"         : 'me.majiajie:pager-bottom-tab-strip:2.3.0',
             //屏幕适配
@@ -46,6 +49,11 @@ ext {
             "permissionsdispatcher-processor": 'org.permissionsdispatcher:permissionsdispatcher-processor:4.3.0',
             //RV适配器
             "BaseRecyclerViewAdapterHelper"  : 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46',
+            //轮播
+            "banner"                         : 'com.youth.banner:banner:1.4.10',
+            //图片加载
+            "glide"                          : 'com.github.bumptech.glide:glide:4.9.0',
+            "glide:compiler"                 : 'com.github.bumptech.glide:compiler:4.9.0',
             //bmob后台需要以下和rxJava、rxAndroid
             "bmob"                           : 'cn.bmob.android:bmob-sdk:3.7.0',
             "okio"                           : 'com.squareup.okio:okio:2.1.0',

@@ -1,4 +1,4 @@
-package com.fangwolf.module_main;
+package com.fangwolf.module_main.ui;
 
 import android.os.Bundle;
 import android.view.View;
@@ -8,8 +8,8 @@ import com.fangwolf.library_base.base.BaseActivity;
 import com.fangwolf.library_base.router.RouterActivityPath;
 import com.fangwolf.library_base.utils.SPUtils;
 import com.fangwolf.library_base.widget.RxTimer;
+import com.fangwolf.module_main.R;
 import com.fangwolf.module_main.databinding.MainActivitySplashBinding;
-import com.orhanobut.logger.Logger;
 
 /**
  * @Auther 獠牙血狼

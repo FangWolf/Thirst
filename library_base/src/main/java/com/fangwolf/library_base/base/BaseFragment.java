@@ -6,10 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.fangwolf.library_base.widget.Loading;
+
 import org.greenrobot.eventbus.EventBus;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
 
 /**
@@ -17,8 +21,10 @@ import androidx.fragment.app.Fragment;
  * @Date 2019/3/1
  * @Desc 基础fragment
  */
-public abstract class BaseFragment extends Fragment implements View.OnClickListener {
-    View view;
+public abstract class BaseFragment<BindingType extends ViewDataBinding> extends Fragment implements View.OnClickListener {
+    private View view;
+    public BindingType BD;
+    private Loading loading;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,7 +36,8 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         int layoutId = getLayoutId();
         if (layoutId != 0) {
-            view = inflater.inflate(getLayoutId(), container, false);
+            BD = DataBindingUtil.inflate(inflater, getLayoutId(), container, false);
+            view = BD.getRoot();
         }
         initView();
         return view;
@@ -99,6 +106,27 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         for (int i = 0; i < v.length; i++) {
             v[i].setVisibility(View.VISIBLE);
         }
+    }
+
+    /**
+     * 初始化loading
+     */
+    public void initLoading() {
+        loading = new Loading(getActivity());
+    }
+
+    /**
+     * 显示loading
+     */
+    public void showLoading() {
+        loading.show();
+    }
+
+    /**
+     * 取消loading
+     */
+    public void dismissLoading() {
+        loading.dismiss();
     }
 
     @Override

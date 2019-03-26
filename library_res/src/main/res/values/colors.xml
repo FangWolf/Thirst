@@ -6,5 +6,8 @@
 
     <color name="main_text_color">#333333</color>
 
-    <color name="gray_af">#afff</color>
+    <color name="gray_7f">#7fff</color>
+    <color name="gray_66">#666</color>
+
+    <color name="white">#fff</color>
 </resources>

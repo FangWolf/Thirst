@@ -48,4 +48,8 @@ dependencies {
     api rootProject.ext.dependencies["okio"]
     api rootProject.ext.dependencies["gson"]
     api rootProject.ext.dependencies["okhttp"]
+    debugImplementation rootProject.ext.dependencies["leakcanary-android"]
+    releaseImplementation rootProject.ext.dependencies["leakcanary-android-no-op"]
+    api rootProject.ext.dependencies["glide"]
+    annotationProcessor rootProject.ext.dependencies["glide:compiler"]
 }

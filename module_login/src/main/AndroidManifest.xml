@@ -2,7 +2,7 @@
     package="com.fangwolf.module_login">
 
     <application>
-        <activity android:name=".functions.login.LoginActivity"></activity>
-        <activity android:name=".functions.login.RegisterActivity"></activity>
+        <activity android:name=".ui.LoginActivity"></activity>
+        <activity android:name=".ui.RegisterActivity"></activity>
     </application>
 </manifest>

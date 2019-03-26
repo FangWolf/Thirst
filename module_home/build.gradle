@@ -23,4 +23,5 @@ android {
 dependencies {
     api project(':library_base')
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
+    implementation rootProject.ext.dependencies["banner"]
 }

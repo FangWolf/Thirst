@@ -1,4 +1,4 @@
-package com.fangwolf.module_main;
+package com.fangwolf.module_main.ui;
 
 import android.os.Bundle;
 import android.view.View;
@@ -8,7 +8,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.fangwolf.library_base.base.BaseActivity;
 import com.fangwolf.library_base.router.RouterActivityPath;
 import com.fangwolf.library_base.router.RouterFragmentPath;
-import com.fangwolf.library_base.utils.ToastUtils;
+import com.fangwolf.module_main.R;
 import com.fangwolf.module_main.databinding.MainActivityMainBinding;
 
 import java.util.ArrayList;
@@ -22,6 +22,8 @@ import me.majiajie.pagerbottomtabstrip.listener.OnTabItemSelectedListener;
 @Route(path = RouterActivityPath.Main.MAIN)
 public class MainActivity extends BaseActivity<MainActivityMainBinding> {
     private List<Fragment> mFragments;
+    private PostDialog postDialog;
+    private NavigationController navigationController;
 
     @Override
     protected int setLayoutID() {
@@ -36,6 +38,7 @@ public class MainActivity extends BaseActivity<MainActivityMainBinding> {
 
     @Override
     protected void initData(Bundle savedInstanceState) {
+        postDialog = new PostDialog();
 
     }
 
@@ -45,7 +48,7 @@ public class MainActivity extends BaseActivity<MainActivityMainBinding> {
     }
 
     private void initFragment() {
-//ARouter拿到多Fragment(这里需要通过ARouter获取，不能直接new,因为在组件独立运行时，宿主app是没有依赖其他组件，所以new不到其他组件的Fragment)
+        //ARouter拿到多Fragment(这里需要通过ARouter获取，不能直接new,因为在组件独立运行时，宿主app是没有依赖其他组件，所以new不到其他组件的Fragment)
         Fragment homeFragment = (Fragment) ARouter.getInstance().build(RouterFragmentPath.Home.MAIN).navigation();
         Fragment newsFragment = (Fragment) ARouter.getInstance().build(RouterFragmentPath.News.MAIN).navigation();
         Fragment chatFragment = (Fragment) ARouter.getInstance().build(RouterFragmentPath.Chat.MAIN).navigation();
@@ -67,7 +70,7 @@ public class MainActivity extends BaseActivity<MainActivityMainBinding> {
      * 底部导航栏
      */
     private void initBottomTab() {
-        NavigationController navigationController = BD.pagerBottomTab.material()
+        navigationController = BD.pagerBottomTab.material()
                 .addItem(R.mipmap.ic_launcher, "首页")
                 .addItem(R.mipmap.ic_launcher, "资讯")
                 .addItem(R.mipmap.ic_launcher, "发布")
@@ -78,22 +81,45 @@ public class MainActivity extends BaseActivity<MainActivityMainBinding> {
         navigationController.addTabItemSelectedListener(new OnTabItemSelectedListener() {
             @Override
             public void onSelected(int index, int old) {
-                if (index == 2) {
-                    ToastUtils.showShort("发布弹窗");
-                } else if (index > 2) {
-                    index -= 1;
-                }
-                Fragment currentFragment = mFragments.get(index);
-                if (currentFragment != null) {
-                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.fl_root, currentFragment);
-                    transaction.commitAllowingStateLoss();
+                switch (index) {
+                    case 0:
+                    case 1:
+                    case 3:
+                    case 4:
+                        changePage(index);
+                        break;
+                    case 2:
+                        postDialog.show(getSupportFragmentManager(), "post");
+                        navigationController.setSelect(old);
+                        break;
+
                 }
             }
 
             @Override
             public void onRepeat(int index) {
+                if (index == 2) {
+                    postDialog.show(getSupportFragmentManager(), "post");
+                }
             }
         });
+    }
+
+    /**
+     * 切换页面
+     * 中间一个是发布弹窗
+     *
+     * @param index
+     */
+    private void changePage(int index) {
+        if (index > 2) {
+            index -= 1;
+        }
+        Fragment currentFragment = mFragments.get(index);
+        if (currentFragment != null) {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.fl_root, currentFragment);
+            transaction.commitAllowingStateLoss();
+        }
     }
 }

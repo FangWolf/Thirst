@@ -19,14 +19,14 @@
             android:name="design_height_in_dp"
             android:value="760" />
 
-        <activity android:name=".functions.login.LoginActivity">
+        <activity android:name=".ui.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".functions.login.RegisterActivity"></activity>
+        <activity android:name=".ui.RegisterActivity"></activity>
 
         <provider
             android:name="cn.bmob.v3.util.BmobContentProvider"

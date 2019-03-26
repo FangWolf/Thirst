@@ -7,6 +7,7 @@ import com.fangwolf.library_base.BuildConfig;
 import com.fangwolf.library_base.utils.Utils;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
+import com.squareup.leakcanary.LeakCanary;
 
 import cn.bmob.v3.Bmob;
 
@@ -36,6 +37,11 @@ public class BaseModuleInit implements IModuleInit {
 
     @Override
     public boolean onInitBehind(Application application) {
+        if (LeakCanary.isInAnalyzerProcess(application)) {
+            // This process is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this process.
+        }
+        LeakCanary.install(application);
         Logger.e("基础层初始化 -- onInitBehind");
         return false;
     }

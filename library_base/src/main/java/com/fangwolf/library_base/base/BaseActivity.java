@@ -3,6 +3,7 @@ package com.fangwolf.library_base.base;
 import android.os.Bundle;
 import android.view.View;
 
+import com.fangwolf.library_base.widget.Loading;
 import com.orhanobut.logger.Logger;
 
 import org.greenrobot.eventbus.EventBus;
@@ -20,6 +21,7 @@ import androidx.databinding.ViewDataBinding;
  */
 public abstract class BaseActivity<BindingType extends ViewDataBinding> extends AppCompatActivity implements View.OnClickListener {
     public BindingType BD;
+    private Loading loading;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -93,9 +95,34 @@ public abstract class BaseActivity<BindingType extends ViewDataBinding> extends 
         }
     }
 
+    /**
+     * 初始化loading
+     */
+    public void initLoading() {
+        loading = new Loading(this);
+    }
+
+    /**
+     * 显示loading
+     */
+    public void showLoading() {
+        loading.show();
+    }
+
+    /**
+     * 取消loading
+     */
+    public void dismissLoading() {
+        loading.dismiss();
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+        if (loading != null && loading.isShowing()) {
+            loading.dismiss();
+            loading = null;
+        }
     }
 }
