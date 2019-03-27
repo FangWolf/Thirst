@@ -20,7 +20,9 @@
             android:name="design_height_in_dp"
             android:value="760" />
 
-        <activity android:name="com.fangwolf.module_main.ui.SplashActivity">
+        <activity
+            android:name="com.fangwolf.module_main.ui.SplashActivity"
+            android:theme="@style/ThemeSplash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

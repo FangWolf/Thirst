@@ -4,6 +4,8 @@ import android.content.Context;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.fangwolf.module_home.R;
 import com.youth.banner.loader.ImageLoader;
 
 /**
@@ -22,7 +24,12 @@ public class GlideImageLoader extends ImageLoader {
          切记不要胡乱强转！
          */
         //Glide 加载图片简单用法
-        Glide.with(context).load((String) path).into(imageView);
+        RequestOptions options = new RequestOptions();
+        options.placeholder(R.mipmap.ic_launcher);
+        Glide.with(context)
+                .load((String) path)
+                .apply(options)
+                .into(imageView);
 
     }
 }
