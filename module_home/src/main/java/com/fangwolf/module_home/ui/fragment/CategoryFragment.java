@@ -41,7 +41,7 @@ public class CategoryFragment extends BaseFragment<HomeFragmentCategoryBinding> 
     @Override
     public void initView() {
         Bundle bundle = getArguments();
-        title = bundle.getString("title");
+        title = bundle.getInt("id") + bundle.getString("name");
         BD.tvTitle.setText(title);
         initRv();
     }
@@ -58,7 +58,7 @@ public class CategoryFragment extends BaseFragment<HomeFragmentCategoryBinding> 
 
     private void initRv() {
         list = new ArrayList<>();
-        adapter = new HomeAdapter(R.layout.home_item_home, list);
+        adapter = new HomeAdapter(R.layout.home_item_category, list);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         View headView = getHeaderView();
         adapter.addHeaderView(headView);

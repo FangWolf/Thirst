@@ -4,6 +4,7 @@ package com.fangwolf.module_home.adapter;
 import android.content.Context;
 import android.os.Bundle;
 
+import com.fangwolf.module_home.bean.CategoryBean;
 import com.fangwolf.module_home.ui.fragment.CategoryFragment;
 
 import java.util.List;
@@ -21,15 +22,15 @@ import androidx.viewpager.widget.ViewPager;
  */
 public class HomeViewPageAdapter extends FragmentPagerAdapter {
     private Stack<Fragment> fragStack = new Stack<>();
-    private List<String> titles;
+    private List<CategoryBean> categoryList;
     private Context context;
 
-    public HomeViewPageAdapter(FragmentManager fm, ViewPager viewPager, List<String> titles) {
+    public HomeViewPageAdapter(FragmentManager fm, ViewPager viewPager, List<CategoryBean> categoryList) {
         super(fm);
         this.context = viewPager.getContext();
         viewPager.setOffscreenPageLimit(1);
         viewPager.setAdapter(this);
-        this.titles = titles;
+        this.categoryList = categoryList;
         initFrag();
     }
 
@@ -43,15 +44,16 @@ public class HomeViewPageAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return titles == null ? 0 : titles.size();
+        return categoryList == null ? 0 : categoryList.size();
     }
 
     private void initFrag() {
         fragStack.clear();
-        for (int i = 0; i < titles.size(); i++) {
+        for (int i = 0; i < categoryList.size(); i++) {
             Bundle bundle = new Bundle();
             bundle.putInt("index", i + 1);
-            bundle.putString("title", titles.get(i));
+            bundle.putInt("id", categoryList.get(i).getId());
+            bundle.putString("name", categoryList.get(i).getName());
             fragStack.add(Fragment.instantiate(context, CategoryFragment.class.getName(), bundle));
         }
     }
