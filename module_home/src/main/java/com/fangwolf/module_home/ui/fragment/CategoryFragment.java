@@ -28,10 +28,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
  * @Desc 首页分类的fragment
  */
 public class CategoryFragment extends BaseFragment<HomeFragmentCategoryBinding> {
-    private String title;
     private List<String> imgList;
     private List<TestBean> list;
     private HomeAdapter adapter;
+    private String name;
+    private int id;
 
     @Override
     public int getLayoutId() {
@@ -41,8 +42,9 @@ public class CategoryFragment extends BaseFragment<HomeFragmentCategoryBinding> 
     @Override
     public void initView() {
         Bundle bundle = getArguments();
-        title = bundle.getInt("id") + bundle.getString("name");
-        BD.tvTitle.setText(title);
+        id = bundle.getInt("id");
+        name = bundle.getString("name");
+        BD.tvTitle.setText(id + name);
         initRv();
     }
 
@@ -60,8 +62,10 @@ public class CategoryFragment extends BaseFragment<HomeFragmentCategoryBinding> 
         list = new ArrayList<>();
         adapter = new HomeAdapter(R.layout.home_item_category, list);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        View headView = getHeaderView();
-        adapter.addHeaderView(headView);
+        if (id == 11) {
+            View headView = getHeaderView();
+            adapter.addHeaderView(headView);
+        }
         BD.recyclerView.setLayoutManager(layoutManager);
         BD.recyclerView.setAdapter(adapter);
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
@@ -88,7 +92,7 @@ public class CategoryFragment extends BaseFragment<HomeFragmentCategoryBinding> 
                 .setImageLoader(new GlideImageLoader())
                 .isAutoPlay(true)
                 .setDelayTime(3000)
-                .setIndicatorGravity(BannerConfig.CENTER)
+                .setIndicatorGravity(BannerConfig.RIGHT)
                 .setOnBannerListener(new OnBannerListener() {
                     @Override
                     public void OnBannerClick(int position) {
