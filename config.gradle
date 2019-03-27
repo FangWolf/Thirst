@@ -40,6 +40,8 @@ ext {
             "leakcanary-android-no-op"       : 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3',
             //底部导航栏
             "pager-bottom-tab-strip"         : 'me.majiajie:pager-bottom-tab-strip:2.3.0',
+            //viewPage指示器
+            "MagicIndicator"                 : 'com.github.hackware1993:MagicIndicator:1.6.0',
             //屏幕适配
             "autosize"                       : 'me.jessyan:autosize:1.1.2',
             //EventBus

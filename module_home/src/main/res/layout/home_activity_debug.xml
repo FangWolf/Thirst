@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/main"
-        android:name="com.fangwolf.module_home.ui.HomeFragment"
+        android:name="com.fangwolf.module_home.ui.fragment.HomeFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></fragment>
 </FrameLayout>
