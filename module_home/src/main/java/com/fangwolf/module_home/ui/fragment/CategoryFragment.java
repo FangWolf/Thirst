@@ -11,15 +11,23 @@ import com.fangwolf.module_home.R;
 import com.fangwolf.module_home.adapter.HomeAdapter;
 import com.fangwolf.module_home.bean.TestBean;
 import com.fangwolf.module_home.databinding.HomeFragmentCategoryBinding;
+import com.fangwolf.module_home.event.RefreshEvent;
 import com.fangwolf.module_home.sundries.GlideImageLoader;
+import com.scwang.smartrefresh.header.PhoenixHeader;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.listener.OnBannerListener;
+
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 /**
@@ -33,6 +41,7 @@ public class CategoryFragment extends BaseFragment<HomeFragmentCategoryBinding> 
     private HomeAdapter adapter;
     private String name;
     private int id;
+    private int index;
 
     @Override
     public int getLayoutId() {
@@ -41,16 +50,18 @@ public class CategoryFragment extends BaseFragment<HomeFragmentCategoryBinding> 
 
     @Override
     public void initView() {
+        registerEventBus();
         Bundle bundle = getArguments();
+        index = bundle.getInt("index");
         id = bundle.getInt("id");
         name = bundle.getString("name");
         BD.tvTitle.setText(id + name);
-        initRv();
+        initRV();
     }
 
     @Override
     public void initData() {
-        loadData();
+        initRL();
     }
 
     @Override
@@ -58,7 +69,7 @@ public class CategoryFragment extends BaseFragment<HomeFragmentCategoryBinding> 
 
     }
 
-    private void initRv() {
+    private void initRV() {
         list = new ArrayList<>();
         adapter = new HomeAdapter(R.layout.home_item_category, list);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -103,14 +114,45 @@ public class CategoryFragment extends BaseFragment<HomeFragmentCategoryBinding> 
         return view;
     }
 
-    private void loadData() {
+    private void initRL() {
+        BD.refreshLayout.setRefreshHeader(new PhoenixHeader(getContext()));
+        BD.refreshLayout.setEnableRefresh(true);
+        BD.refreshLayout.setEnableLoadMore(true);
+        BD.refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                list.clear();
+                loadData();
+                BD.refreshLayout.finishRefresh();
+            }
+        });
+        BD.refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                loadData();
+                BD.refreshLayout.finishLoadMore();
+            }
+        });
+        BD.refreshLayout.autoRefresh();
+        BD.refreshLayout.autoLoadMore();
+    }
+
+    public void loadData() {
         Random r = new Random();
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < 10; i++) {
             list.add(new TestBean(
                     r.nextInt(999), r.nextInt(999), r.nextInt(999), r.nextInt(999),
                     r.nextInt(999), r.nextInt(999), r.nextInt(999), r.nextInt(999),
                     r.nextInt(999), r.nextInt(999), r.nextInt(999), r.nextInt(999), r.nextInt(999)));
         }
         adapter.notifyDataSetChanged();
+    }
+
+    @Subscribe
+    public void refresh(RefreshEvent event) {
+        if (event.index == index && isVisible()) {
+            BD.recyclerView.scrollToPosition(0);
+            BD.refreshLayout.autoRefresh();
+        }
     }
 }

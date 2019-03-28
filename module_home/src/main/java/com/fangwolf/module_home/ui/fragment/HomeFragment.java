@@ -13,8 +13,8 @@ import com.fangwolf.module_home.R;
 import com.fangwolf.module_home.adapter.HomeViewPageAdapter;
 import com.fangwolf.module_home.bean.CategoryBean;
 import com.fangwolf.module_home.databinding.HomeFragmentHomeBinding;
+import com.fangwolf.module_home.event.RefreshEvent;
 import com.fangwolf.module_home.sundries.ScaleTransitionPagerTitleView;
-import com.orhanobut.logger.Logger;
 
 import net.lucode.hackware.magicindicator.ViewPagerHelper;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator;
@@ -24,7 +24,7 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTit
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.BezierPagerIndicator;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.SimplePagerTitleView;
 
-import org.json.JSONArray;
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,6 @@ import java.util.List;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
-import cn.bmob.v3.listener.QueryListener;
 
 /**
  * @Auther 獠牙血狼
@@ -41,7 +40,8 @@ import cn.bmob.v3.listener.QueryListener;
  */
 @Route(path = RouterFragmentPath.Home.MAIN)
 public class HomeFragment extends BaseFragment<HomeFragmentHomeBinding> {
-    private List<CategoryBean> mDataList = new ArrayList<>();
+    private List<CategoryBean> mDataList;
+    int oldIndex = 0;
 
     @Override
     public int getLayoutId() {
@@ -50,6 +50,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentHomeBinding> {
 
     @Override
     public void initView() {
+        mDataList = new ArrayList<>();
         BmobQuery<CategoryBean> categoryBmobQuery = new BmobQuery<>();
         categoryBmobQuery.findObjects(new FindListener<CategoryBean>() {
             @Override
@@ -76,7 +77,6 @@ public class HomeFragment extends BaseFragment<HomeFragmentHomeBinding> {
 
     }
 
-
     private void initMagicIndicator() {
         BD.magicIndicator.setBackgroundColor(Color.WHITE);
         CommonNavigator commonNavigator = new CommonNavigator(getActivity());
@@ -96,7 +96,12 @@ public class HomeFragment extends BaseFragment<HomeFragmentHomeBinding> {
                 simplePagerTitleView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        BD.viewPager.setCurrentItem(index);
+                        if (oldIndex == index) {
+                            EventBus.getDefault().postSticky(new RefreshEvent(index));
+                        } else {
+                            BD.viewPager.setCurrentItem(index);
+                        }
+                        oldIndex = index;
                     }
                 });
                 return simplePagerTitleView;

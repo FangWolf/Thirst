@@ -51,7 +51,7 @@ public class HomeViewPageAdapter extends FragmentPagerAdapter {
         fragStack.clear();
         for (int i = 0; i < categoryList.size(); i++) {
             Bundle bundle = new Bundle();
-            bundle.putInt("index", i + 1);
+            bundle.putInt("index", i);
             bundle.putInt("id", categoryList.get(i).getId());
             bundle.putString("name", categoryList.get(i).getName());
             fragStack.add(Fragment.instantiate(context, CategoryFragment.class.getName(), bundle));

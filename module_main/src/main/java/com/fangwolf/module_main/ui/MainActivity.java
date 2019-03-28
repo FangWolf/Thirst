@@ -24,6 +24,10 @@ public class MainActivity extends BaseActivity<MainActivityMainBinding> {
     private List<Fragment> mFragments;
     private PostDialog postDialog;
     private NavigationController navigationController;
+    private Fragment homeFragment;
+    private Fragment newsFragment;
+    private Fragment chatFragment;
+    private Fragment mineFragment;
 
     @Override
     protected int setLayoutID() {
@@ -49,10 +53,10 @@ public class MainActivity extends BaseActivity<MainActivityMainBinding> {
 
     private void initFragment() {
         //ARouter拿到多Fragment(这里需要通过ARouter获取，不能直接new,因为在组件独立运行时，宿主app是没有依赖其他组件，所以new不到其他组件的Fragment)
-        Fragment homeFragment = (Fragment) ARouter.getInstance().build(RouterFragmentPath.Home.MAIN).navigation();
-        Fragment newsFragment = (Fragment) ARouter.getInstance().build(RouterFragmentPath.News.MAIN).navigation();
-        Fragment chatFragment = (Fragment) ARouter.getInstance().build(RouterFragmentPath.Chat.MAIN).navigation();
-        Fragment mineFragment = (Fragment) ARouter.getInstance().build(RouterFragmentPath.Mine.MAIN).navigation();
+        homeFragment = (Fragment) ARouter.getInstance().build(RouterFragmentPath.Home.MAIN).navigation();
+        newsFragment = (Fragment) ARouter.getInstance().build(RouterFragmentPath.News.MAIN).navigation();
+        chatFragment = (Fragment) ARouter.getInstance().build(RouterFragmentPath.Chat.MAIN).navigation();
+        mineFragment = (Fragment) ARouter.getInstance().build(RouterFragmentPath.Mine.MAIN).navigation();
         mFragments = new ArrayList<>();
         mFragments.add(homeFragment);
         mFragments.add(newsFragment);

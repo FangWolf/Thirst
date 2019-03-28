@@ -53,4 +53,7 @@ dependencies {
     releaseImplementation rootProject.ext.dependencies["leakcanary-android-no-op"]
     api rootProject.ext.dependencies["glide"]
     annotationProcessor rootProject.ext.dependencies["glide:compiler"]
+    api rootProject.ext.dependencies["retrofit"]
+    api rootProject.ext.dependencies["SmartRefreshLayout"]
+    api rootProject.ext.dependencies["SmartRefreshHeader"]
 }
