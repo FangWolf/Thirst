@@ -57,7 +57,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentHomeBinding> {
             public void done(List<CategoryBean> list, BmobException e) {
                 if (e == null) {
                     mDataList.addAll(list);
-                    BD.viewPager.setAdapter(new HomeViewPageAdapter(getFragmentManager(), BD.viewPager, mDataList));
+                    BD.viewPager.setAdapter(new HomeViewPageAdapter(getChildFragmentManager(), BD.viewPager, mDataList));
                     initMagicIndicator();
                 } else {
                     ToastUtils.showShort(e.getMessage());
