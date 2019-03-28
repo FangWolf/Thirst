@@ -54,6 +54,13 @@ android {
     
     //统一资源前缀，规范资源引用
     resourcePrefix "app_"
+
+    //打包命名方式
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "${rootProject.ext.android.appName}-${buildType.name}_V${variant.versionName}-${defaultConfig.versionCode}.apk"
+        }
+    }
 }
 
 dependencies {
