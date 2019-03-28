@@ -46,7 +46,9 @@ public abstract class BaseActivity<BindingType extends ViewDataBinding> extends 
      * 注册EventBus监听
      */
     public void registerEventBus() {
-        EventBus.getDefault().register(this);
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
     }
 
     /**
@@ -119,7 +121,9 @@ public abstract class BaseActivity<BindingType extends ViewDataBinding> extends 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        EventBus.getDefault().unregister(this);
+        if (EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
+        }
         if (loading != null && loading.isShowing()) {
             loading.dismiss();
             loading = null;

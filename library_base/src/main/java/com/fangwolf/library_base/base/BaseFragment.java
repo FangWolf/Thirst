@@ -59,7 +59,9 @@ public abstract class BaseFragment<BindingType extends ViewDataBinding> extends 
      * 注册EventBus监听
      */
     public void registerEventBus() {
-        EventBus.getDefault().register(this);
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
     }
 
     /**
@@ -132,6 +134,8 @@ public abstract class BaseFragment<BindingType extends ViewDataBinding> extends 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        EventBus.getDefault().unregister(this);
+        if (EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
+        }
     }
 }
