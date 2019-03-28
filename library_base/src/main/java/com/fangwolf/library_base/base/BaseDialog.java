@@ -6,7 +6,11 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Window;
+
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 
 
 /**
@@ -14,7 +18,8 @@ import android.view.Window;
  * @Date 2019/3/11
  * @Desc 基础dialog
  */
-public class BaseDialog extends Dialog {
+public abstract class BaseDialog<BindingType extends ViewDataBinding> extends Dialog {
+    public BindingType BD;
     private int layoutId;
 
     public BaseDialog(Context context) {
@@ -33,8 +38,10 @@ public class BaseDialog extends Dialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (layoutId > 0) {
-            setContentView(layoutId);
+        layoutId = setLayoutID();
+        if (layoutId != 0) {
+            BD = DataBindingUtil.inflate(LayoutInflater.from(getContext()), layoutId, null, false);
+            setContentView(BD.getRoot());
         }
         //居中
         Window window = this.getWindow();
@@ -42,5 +49,7 @@ public class BaseDialog extends Dialog {
         //背景透明
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
+
+    public abstract int setLayoutID();
 
 }
