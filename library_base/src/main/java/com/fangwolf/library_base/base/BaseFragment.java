@@ -113,22 +113,29 @@ public abstract class BaseFragment<BindingType extends ViewDataBinding> extends 
     /**
      * 初始化loading
      */
-    public void initLoading() {
-        loading = new Loading(getActivity());
+    private void initLoading() {
+        if (loading == null) {
+            loading = new Loading(getActivity());
+        }
     }
 
     /**
      * 显示loading
      */
     public void showLoading() {
-        loading.show();
+        initLoading();
+        if (!loading.isShowing()) {
+            loading.show();
+        }
     }
 
     /**
      * 取消loading
      */
     public void dismissLoading() {
-        loading.dismiss();
+        if (loading != null && loading.isShowing()) {
+            loading.dismiss();
+        }
     }
 
     @Override

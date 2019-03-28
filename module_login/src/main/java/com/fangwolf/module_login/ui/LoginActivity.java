@@ -35,7 +35,6 @@ public class LoginActivity extends BaseActivity<LoginActivityLoginBinding> {
     @Override
     protected void initView(Bundle savedInstanceState) {
         setonClickListener(BD.btnBack, BD.btnRegister, BD.btnLogin, BD.btnForget);
-        initLoading();
     }
 
     @Override
