@@ -25,6 +25,7 @@ ext {
             'design'                  : "com.android.support:design:${versions["support-version"]}",
             'animated-vector-drawable': "com.android.support:animated-vector-drawable:${versions["support-version"]}",
 
+            'xappcompat'              : "androidx.appcompat:appcompat:1.1.0-alpha03",
             'legacy'                  : "androidx.legacy:legacy-support-v4:1.0.0",
 
             "constraint-layout"       : "com.android.support.constraint:constraint-layout:${versions["constraint-layout-version"]}"

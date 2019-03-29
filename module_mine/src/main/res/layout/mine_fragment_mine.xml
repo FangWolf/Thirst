@@ -1,15 +1,236 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <FrameLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.fangwolf.module_mine.MineFragment">
+        android:background="@color/gray_bg">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="这是我的页面" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    </FrameLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/white_bg_round"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_avatar"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@mipmap/ic_launcher_round" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="120dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="FangWolf"
+                        android:textColor="@color/main_text_color"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/tv_learn_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="学习时长：666小时"
+                        android:textColor="@color/main_text_color"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/tv_level"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="高级会员"
+                        android:textColor="@color/main_text_color"
+                        android:textSize="15dp" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/white"
+                android:paddingHorizontal="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="分享赚学费"
+                    android:textColor="@color/main_text_color"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_launcher_round" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_bg" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:paddingHorizontal="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="我的视频"
+                    android:textColor="@color/main_text_color"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_launcher_round" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_bg" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:paddingHorizontal="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="收藏"
+                    android:textColor="@color/main_text_color"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_launcher_round" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_bg" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:paddingHorizontal="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="钱包"
+                    android:textColor="@color/main_text_color"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_launcher_round" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/white"
+                android:paddingHorizontal="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="设置"
+                    android:textColor="@color/main_text_color"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_launcher_round" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_bg" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:paddingHorizontal="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="关于"
+                    android:textColor="@color/main_text_color"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_launcher_round" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_bg" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:paddingHorizontal="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="清理缓存"
+                    android:textColor="@color/main_text_color"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_launcher_round" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 </layout>

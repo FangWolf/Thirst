@@ -49,6 +49,7 @@ android {
     configurations.all {
         resolutionStrategy {
             force 'androidx.media:media:1.0.0'
+            force 'androidx.transition:transition:1.1.0-alpha01'
         }
     }
     
