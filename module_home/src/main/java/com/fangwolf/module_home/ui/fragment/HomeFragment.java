@@ -10,12 +10,11 @@ import com.fangwolf.library_base.base.BaseFragment;
 import com.fangwolf.library_base.router.RouterFragmentPath;
 import com.fangwolf.library_base.utils.ToastUtils;
 import com.fangwolf.module_home.R;
-import com.fangwolf.module_home.adapter.HomeViewPageAdapter;
+import com.fangwolf.module_home.adapter.VPHomeAdapter;
 import com.fangwolf.module_home.bean.CategoryBean;
 import com.fangwolf.module_home.databinding.HomeFragmentHomeBinding;
 import com.fangwolf.module_home.event.RefreshEvent;
 import com.fangwolf.module_home.sundries.ScaleTransitionPagerTitleView;
-import com.jaeger.library.StatusBarUtil;
 
 import net.lucode.hackware.magicindicator.ViewPagerHelper;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator;
@@ -58,7 +57,7 @@ public class HomeFragment extends BaseFragment<HomeFragmentHomeBinding> {
             public void done(List<CategoryBean> list, BmobException e) {
                 if (e == null) {
                     mDataList.addAll(list);
-                    BD.viewPager.setAdapter(new HomeViewPageAdapter(getChildFragmentManager(), BD.viewPager, mDataList));
+                    BD.viewPager.setAdapter(new VPHomeAdapter(getChildFragmentManager(), BD.viewPager, mDataList));
                     initMagicIndicator();
                 } else {
                     ToastUtils.showShort(e.getMessage());

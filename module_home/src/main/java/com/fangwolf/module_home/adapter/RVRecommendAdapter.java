@@ -12,17 +12,18 @@ import androidx.annotation.Nullable;
 /**
  * @Auther 獠牙血狼
  * @Date 2019/3/29
- * @Desc 热门和最新适配器
+ * @Desc 推荐的adapter
  */
-public class HotAndNewAdapter extends BaseQuickAdapter<TestBean, BaseViewHolder> {
-    public HotAndNewAdapter(int layoutResId, @Nullable List<TestBean> data) {
+public class RVRecommendAdapter extends BaseQuickAdapter<TestBean, BaseViewHolder> {
+
+    public RVRecommendAdapter(int layoutResId, @Nullable List<TestBean> data) {
         super(layoutResId, data);
     }
 
     @Override
     protected void convert(BaseViewHolder helper, TestBean item) {
-        helper.setText(R.id.tv_title, item.a)
-                .setText(R.id.tv_like_number, item.b)
-                .addOnClickListener(R.id.btn_like, R.id.btn_dislike);
+        helper.setText(R.id.tv_time, item.a + ":" + item.a + ":" + item.a)
+                .setText(R.id.tv_title, item.b)
+                .setText(R.id.tv_viewer_number, mContext.getResources().getString(R.string.home_viewer_number, item.c));
     }
 }

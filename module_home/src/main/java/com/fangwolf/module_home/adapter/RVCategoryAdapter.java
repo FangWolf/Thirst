@@ -11,19 +11,21 @@ import androidx.annotation.Nullable;
 
 /**
  * @Auther 獠牙血狼
- * @Date 2019/3/29
- * @Desc 推荐的adapter
+ * @Date 2019/3/26
+ * @Desc 首页的adapter
  */
-public class RecommendAdapter extends BaseQuickAdapter<TestBean, BaseViewHolder> {
+public class RVCategoryAdapter extends BaseQuickAdapter<TestBean, BaseViewHolder> {
 
-    public RecommendAdapter(int layoutResId, @Nullable List<TestBean> data) {
+    public RVCategoryAdapter(int layoutResId, @Nullable List<TestBean> data) {
         super(layoutResId, data);
     }
 
     @Override
     protected void convert(BaseViewHolder helper, TestBean item) {
-        helper.setText(R.id.tv_time, item.a + ":" + item.a + ":" + item.a)
-                .setText(R.id.tv_title, item.b)
-                .setText(R.id.tv_viewer_number, mContext.getResources().getString(R.string.home_viewer_number, item.c));
+        helper.setText(R.id.tv_title, item.a)
+                .setText(R.id.tv_price, item.b)
+                .setText(R.id.tv_level, item.c)
+                .setText(R.id.tv_number, item.d)
+        ;
     }
 }

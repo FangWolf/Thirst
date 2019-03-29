@@ -20,12 +20,12 @@ import androidx.viewpager.widget.ViewPager;
  * @Date 2019/3/27
  * @Desc 首页的viewPage适配器
  */
-public class HomeViewPageAdapter extends FragmentPagerAdapter {
+public class VPHomeAdapter extends FragmentPagerAdapter {
     private Stack<Fragment> fragStack = new Stack<>();
     private List<CategoryBean> categoryList;
     private Context context;
 
-    public HomeViewPageAdapter(FragmentManager fm, ViewPager viewPager, List<CategoryBean> categoryList) {
+    public VPHomeAdapter(FragmentManager fm, ViewPager viewPager, List<CategoryBean> categoryList) {
         super(fm);
         this.context = viewPager.getContext();
         viewPager.setOffscreenPageLimit(1);

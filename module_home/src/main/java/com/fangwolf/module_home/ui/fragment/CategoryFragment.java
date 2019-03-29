@@ -8,9 +8,9 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.fangwolf.library_base.base.BaseFragment;
 import com.fangwolf.library_base.utils.ToastUtils;
 import com.fangwolf.module_home.R;
-import com.fangwolf.module_home.adapter.HomeAdapter;
-import com.fangwolf.module_home.adapter.HotAndNewAdapter;
-import com.fangwolf.module_home.adapter.RecommendAdapter;
+import com.fangwolf.module_home.adapter.RVCategoryAdapter;
+import com.fangwolf.module_home.adapter.RVHotAndNewAdapter;
+import com.fangwolf.module_home.adapter.RVRecommendAdapter;
 import com.fangwolf.module_home.bean.TestBean;
 import com.fangwolf.module_home.databinding.HomeFragmentCategoryBinding;
 import com.fangwolf.module_home.event.RefreshEvent;
@@ -80,14 +80,14 @@ public class CategoryFragment extends BaseFragment<HomeFragmentCategoryBinding> 
         RecyclerView.LayoutManager layoutManager;
         switch (index) {
             case 0:
-                adapter = new RecommendAdapter(R.layout.home_item_category_recommend, list);
+                adapter = new RVRecommendAdapter(R.layout.home_item_category_recommend, list);
                 layoutManager = new GridLayoutManager(getContext(), 2);
                 View headView = getHeaderView();
                 adapter.addHeaderView(headView);
                 break;
             case 1:
             case 2:
-                adapter = new HotAndNewAdapter(R.layout.home_item_hot_and_new, list);
+                adapter = new RVHotAndNewAdapter(R.layout.home_item_hot_and_new, list);
                 layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
                 adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
                     @Override
@@ -97,7 +97,7 @@ public class CategoryFragment extends BaseFragment<HomeFragmentCategoryBinding> 
                 });
                 break;
             default:
-                adapter = new HomeAdapter(R.layout.home_item_category, list);
+                adapter = new RVCategoryAdapter(R.layout.home_item_category, list);
                 layoutManager = new LinearLayoutManager(getContext());
                 break;
         }
