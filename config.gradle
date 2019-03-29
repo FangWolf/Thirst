@@ -62,6 +62,10 @@ ext {
             //下拉刷新
             "SmartRefreshLayout"             : 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-4',
             "SmartRefreshHeader"             : 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-andx-4',
+            //下拉刷新
+            "statusbarutil"                  : 'com.jaeger.statusbarutil:library:1.5.1',
+            //直接写sharp
+            "background"                     : 'com.noober.background:core:1.4.1',
             //bmob后台需要以下和rxJava、rxAndroid
             "bmob"                           : 'cn.bmob.android:bmob-sdk:3.7.1',
             "okio"                           : 'com.squareup.okio:okio:2.1.0',

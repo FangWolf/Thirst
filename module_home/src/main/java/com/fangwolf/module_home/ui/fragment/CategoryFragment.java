@@ -9,6 +9,8 @@ import com.fangwolf.library_base.base.BaseFragment;
 import com.fangwolf.library_base.utils.ToastUtils;
 import com.fangwolf.module_home.R;
 import com.fangwolf.module_home.adapter.HomeAdapter;
+import com.fangwolf.module_home.adapter.HotAndNewAdapter;
+import com.fangwolf.module_home.adapter.RecommendAdapter;
 import com.fangwolf.module_home.bean.TestBean;
 import com.fangwolf.module_home.databinding.HomeFragmentCategoryBinding;
 import com.fangwolf.module_home.event.RefreshEvent;
@@ -28,17 +30,21 @@ import java.util.List;
 import java.util.Random;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 /**
  * @Auther 獠牙血狼
  * @Date 2019/3/27
  * @Desc 首页分类的fragment
+ * * * * index:viewPage页码
  */
 public class CategoryFragment extends BaseFragment<HomeFragmentCategoryBinding> {
     private List<String> imgList;
     private List<TestBean> list;
-    private HomeAdapter adapter;
+    private BaseQuickAdapter adapter;
     private String name;
     private int id;
     private int index;
@@ -71,11 +77,29 @@ public class CategoryFragment extends BaseFragment<HomeFragmentCategoryBinding> 
 
     private void initRV() {
         list = new ArrayList<>();
-        adapter = new HomeAdapter(R.layout.home_item_category, list);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        if (id == 11) {
-            View headView = getHeaderView();
-            adapter.addHeaderView(headView);
+        RecyclerView.LayoutManager layoutManager;
+        switch (index) {
+            case 0:
+                adapter = new RecommendAdapter(R.layout.home_item_category_recommend, list);
+                layoutManager = new GridLayoutManager(getContext(), 2);
+                View headView = getHeaderView();
+                adapter.addHeaderView(headView);
+                break;
+            case 1:
+            case 2:
+                adapter = new HotAndNewAdapter(R.layout.home_item_hot_and_new, list);
+                layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+                adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+                    @Override
+                    public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                        ToastUtils.showShort(position);
+                    }
+                });
+                break;
+            default:
+                adapter = new HomeAdapter(R.layout.home_item_category, list);
+                layoutManager = new LinearLayoutManager(getContext());
+                break;
         }
         BD.recyclerView.setLayoutManager(layoutManager);
         BD.recyclerView.setAdapter(adapter);
@@ -139,12 +163,35 @@ public class CategoryFragment extends BaseFragment<HomeFragmentCategoryBinding> 
 
     public void loadData() {
         Random r = new Random();
-        for (int i = 0; i < 10; i++) {
-            list.add(new TestBean(
-                    r.nextInt(999), r.nextInt(999), r.nextInt(999), r.nextInt(999),
-                    r.nextInt(999), r.nextInt(999), r.nextInt(999), r.nextInt(999),
-                    r.nextInt(999), r.nextInt(999), r.nextInt(999), r.nextInt(999), r.nextInt(999)));
+        switch (index) {
+            case 0:
+                for (int i = 0; i < 10; i++) {
+                    list.add(new TestBean(
+                            r.nextInt(999), r.nextInt(999), r.nextInt(999), r.nextInt(999),
+                            r.nextInt(999), r.nextInt(999), r.nextInt(999), r.nextInt(999),
+                            r.nextInt(999), r.nextInt(999), r.nextInt(999), r.nextInt(999), r.nextInt(999)));
+                }
+                break;
+            case 1:
+            case 2:
+                for (int i = 0; i < 10; i++) {
+                    String a = "i:";
+                    for (int j = 0; j < i; j++) {
+                        a += j + "\n";
+                    }
+                    list.add(new TestBean(a, "666"));
+                }
+                break;
+            default:
+                for (int i = 0; i < 10; i++) {
+                    list.add(new TestBean(
+                            r.nextInt(999), r.nextInt(999), r.nextInt(999), r.nextInt(999),
+                            r.nextInt(999), r.nextInt(999), r.nextInt(999), r.nextInt(999),
+                            r.nextInt(999), r.nextInt(999), r.nextInt(999), r.nextInt(999), r.nextInt(999)));
+                }
+                break;
         }
+
         adapter.notifyDataSetChanged();
     }
 

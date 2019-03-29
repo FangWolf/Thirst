@@ -15,6 +15,7 @@ import com.fangwolf.module_home.bean.CategoryBean;
 import com.fangwolf.module_home.databinding.HomeFragmentHomeBinding;
 import com.fangwolf.module_home.event.RefreshEvent;
 import com.fangwolf.module_home.sundries.ScaleTransitionPagerTitleView;
+import com.jaeger.library.StatusBarUtil;
 
 import net.lucode.hackware.magicindicator.ViewPagerHelper;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator;
@@ -65,7 +66,6 @@ public class HomeFragment extends BaseFragment<HomeFragmentHomeBinding> {
             }
         });
     }
-
 
     @Override
     public void initData() {

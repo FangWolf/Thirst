@@ -8,8 +8,9 @@
 
     <color name="green_0f">#00ff80</color>
 
-    <color name="gray_7f">#7fff</color>
+    <color name="gray_bg">#eee</color>
     <color name="gray_66">#666</color>
+    <color name="gray_7f">#7fff</color>
 
     <color name="white">#fff</color>
 </resources>

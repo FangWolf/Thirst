@@ -56,4 +56,5 @@ dependencies {
     api rootProject.ext.dependencies["retrofit"]
     api rootProject.ext.dependencies["SmartRefreshLayout"]
     api rootProject.ext.dependencies["SmartRefreshHeader"]
+    api rootProject.ext.dependencies["statusbarutil"]
 }

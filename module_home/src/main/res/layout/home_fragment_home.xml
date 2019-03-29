@@ -21,7 +21,8 @@
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:background="@color/gray_7f"
+                android:background="@drawable/home_et_bg"
+                android:gravity="center"
                 android:hint="搜索" />
 
             <ImageView
@@ -39,7 +40,8 @@
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:background="@color/gray_bg" />
 
     </LinearLayout>
 </layout>
