@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.fangwolf.library_base.base.BaseFragment;
+import com.fangwolf.library_base.router.RouterActivityPath;
 import com.fangwolf.library_base.utils.ToastUtils;
 import com.fangwolf.module_home.R;
 import com.fangwolf.module_home.adapter.RVCategoryAdapter;
@@ -106,7 +108,10 @@ public class CategoryFragment extends BaseFragment<HomeFragmentCategoryBinding> 
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                ToastUtils.showShort(position);
+                ARouter.getInstance()
+                        .build(RouterActivityPath.Home.WATCH_VIDEO)
+                        .withInt("postion", position)
+                        .navigation();
             }
         });
     }

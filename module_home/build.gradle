@@ -22,6 +22,12 @@ android {
 
 dependencies {
     api project(':library_base')
+    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0-alpha1'
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
     implementation rootProject.ext.dependencies["banner"]
+    implementation rootProject.ext.dependencies["gsyVideoPlayer-java"]
+    implementation rootProject.ext.dependencies["gsyVideoPlayer-armv7a"]
+    implementation rootProject.ext.dependencies["gsyVideoPlayer-arm64"]
 }

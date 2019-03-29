@@ -19,12 +19,21 @@ public class RouterActivityPath {
     }
 
     /**
-     * 壳的组件
+     * 壳组件
      */
     public static class Main {
         private static final String MAIN_BASE = "/Main";
         //主页
         public static final String MAIN = MAIN_BASE + "/main";
+    }
+
+    /**
+     * 首页组件
+     */
+    public static class Home {
+        private static final String HOME_BASE = "/Home";
+        //看视频
+        public static final String WATCH_VIDEO = HOME_BASE + "/video";
     }
 
 }

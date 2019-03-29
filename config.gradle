@@ -66,6 +66,10 @@ ext {
             "statusbarutil"                  : 'com.jaeger.statusbarutil:library:1.5.1',
             //直接写sharp
             "background"                     : 'com.noober.background:core:1.4.1',
+            //视频播放器
+            "gsyVideoPlayer-java"            : 'com.shuyu:gsyVideoPlayer-java:7.0.0-beta1',
+            "gsyVideoPlayer-armv7a"          : 'com.shuyu:gsyVideoPlayer-armv7a:7.0.0-beta1',
+            "gsyVideoPlayer-arm64"           : 'com.shuyu:gsyVideoPlayer-arm64:7.0.0-beta1',
             //bmob后台需要以下和rxJava、rxAndroid
             "bmob"                           : 'cn.bmob.android:bmob-sdk:3.7.1',
             "okio"                           : 'com.squareup.okio:okio:2.1.0',
