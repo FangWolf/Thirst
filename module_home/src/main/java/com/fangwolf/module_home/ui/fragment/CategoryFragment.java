@@ -110,7 +110,7 @@ public class CategoryFragment extends BaseFragment<HomeFragmentCategoryBinding> 
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 ARouter.getInstance()
                         .build(RouterActivityPath.Home.WATCH_VIDEO)
-                        .withInt("postion", position)
+                        .withInt("position", position)
                         .navigation();
             }
         });

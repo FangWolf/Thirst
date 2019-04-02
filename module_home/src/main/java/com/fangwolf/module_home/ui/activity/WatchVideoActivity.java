@@ -44,7 +44,7 @@ import androidx.core.view.ViewCompat;
 @Route(path = RouterActivityPath.Home.WATCH_VIDEO)
 public class WatchVideoActivity extends BaseActivity<HomeActivityWatchVideoBinding> {
     private List<String> mDataList;
-    private String url = "http://9890.vod.myqcloud.com/9890_4e292f9a3dd011e6b4078980237cc3d3.f20.mp4";
+    private String url = "http://upos-hz-mirrorwcsu.acgvideo.com/upgcxcode/61/30/41613061/41613061-1-208.mp4?ua=tvproj&deadline=1554019048&gen=playurl&nbs=1&oi=2501663261&os=wcsu&trid=e676276ddc75430ba96f111f804eb972&uipk=5&upsig=10f9f874febbcba345c36a06374185fe";
     private OrientationUtils orientationUtils;
     private boolean isTransition;
     private Transition transition;
