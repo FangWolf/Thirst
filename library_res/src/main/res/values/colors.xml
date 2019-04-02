@@ -4,6 +4,14 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
+    <color name="main_color_wine_green">#84C225</color>
+    <color name="main_color_powder_blue">#BAB3D6</color>
+    <color name="main_color_ice_blue">#75C5F0</color>
+    <color name="main_color_pink">#EF9BA0</color>
+    <color name="main_color_darkYellow">#F8C300</color>
+    <color name="main_color_soft_blue">#8E84B7</color>
+    <color name="main_color_dark_brown">#71625B</color>
+
     <color name="main_text_color">#333333</color>
 
     <color name="green_0f">#00ff80</color>
