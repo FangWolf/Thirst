@@ -1,4 +1,3 @@
 <resources>
     <string name="home_app_name">module_home</string>
-    <string name="home_viewer_number">%1$s万人观看</string>
 </resources>

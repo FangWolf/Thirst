@@ -13,6 +13,7 @@ import com.fangwolf.module_home.R;
 import com.fangwolf.module_home.adapter.RVCategoryAdapter;
 import com.fangwolf.module_home.adapter.RVHotAndNewAdapter;
 import com.fangwolf.module_home.adapter.RVRecommendAdapter;
+import com.fangwolf.module_home.bean.RecommendBean;
 import com.fangwolf.module_home.bean.TestBean;
 import com.fangwolf.module_home.databinding.HomeFragmentCategoryBinding;
 import com.fangwolf.module_home.event.RefreshEvent;
@@ -36,6 +37,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 
 /**
  * @Auther 獠牙血狼
@@ -46,6 +50,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 public class CategoryFragment extends BaseFragment<HomeFragmentCategoryBinding> {
     private List<String> imgList;
     private List<TestBean> list;
+    private List<RecommendBean> recommendList;
     private BaseQuickAdapter adapter;
     private String name;
     private int id;
@@ -63,7 +68,6 @@ public class CategoryFragment extends BaseFragment<HomeFragmentCategoryBinding> 
         index = bundle.getInt("index");
         id = bundle.getInt("id");
         name = bundle.getString("name");
-        BD.tvTitle.setText(id + name);
         initRV();
     }
 
@@ -79,10 +83,11 @@ public class CategoryFragment extends BaseFragment<HomeFragmentCategoryBinding> 
 
     private void initRV() {
         list = new ArrayList<>();
+        recommendList = new ArrayList<>();
         RecyclerView.LayoutManager layoutManager;
         switch (index) {
             case 0:
-                adapter = new RVRecommendAdapter(R.layout.home_item_category_recommend, list);
+                adapter = new RVRecommendAdapter(R.layout.home_item_category_recommend, recommendList);
                 layoutManager = new GridLayoutManager(getContext(), 2);
                 View headView = getHeaderView();
                 adapter.addHeaderView(headView);
@@ -151,6 +156,7 @@ public class CategoryFragment extends BaseFragment<HomeFragmentCategoryBinding> 
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 list.clear();
+                recommendList.clear();
                 loadData();
                 BD.refreshLayout.finishRefresh();
             }
@@ -170,12 +176,17 @@ public class CategoryFragment extends BaseFragment<HomeFragmentCategoryBinding> 
         Random r = new Random();
         switch (index) {
             case 0:
-                for (int i = 0; i < 10; i++) {
-                    list.add(new TestBean(
-                            r.nextInt(999), r.nextInt(999), r.nextInt(999), r.nextInt(999),
-                            r.nextInt(999), r.nextInt(999), r.nextInt(999), r.nextInt(999),
-                            r.nextInt(999), r.nextInt(999), r.nextInt(999), r.nextInt(999), r.nextInt(999)));
-                }
+                BmobQuery<RecommendBean> recommendBmobQuery = new BmobQuery<>();
+                recommendBmobQuery.findObjects(new FindListener<RecommendBean>() {
+                    @Override
+                    public void done(List<RecommendBean> list, BmobException e) {
+                        if (e == null) {
+                            recommendList.addAll(list);
+                        } else {
+                            ToastUtils.showShort(e.getMessage());
+                        }
+                    }
+                });
                 break;
             case 1:
             case 2:
