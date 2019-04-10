@@ -18,8 +18,19 @@
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="3dp"
+        android:maxLines="2"
+        android:paddingHorizontal="3dp"
         android:text="这是简介"
+        android:textColor="@color/main_text_color"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:text="这是描述"
         android:textColor="@color/main_text_color"
         android:textSize="15dp" />
 
@@ -35,7 +46,7 @@
             android:src="@mipmap/ic_launcher" />
 
         <TextView
-            android:id="@+id/tv_like_number"
+            android:id="@+id/tv_vote_number"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

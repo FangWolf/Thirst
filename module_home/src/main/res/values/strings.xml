@@ -1,3 +1,4 @@
 <resources>
     <string name="home_app_name">module_home</string>
+    <string name="home_app_level">适合 %1$s 人群观看</string>
 </resources>
