@@ -18,8 +18,8 @@ import com.fangwolf.module_home.bean.HotAndNewsBean;
 import com.fangwolf.module_home.bean.RecommendBean;
 import com.fangwolf.module_home.databinding.HomeFragmentCategoryBinding;
 import com.fangwolf.module_home.event.RefreshEvent;
+import com.fangwolf.module_home.sundries.ApiUtils;
 import com.fangwolf.module_home.sundries.GlideImageLoader;
-import com.orhanobut.logger.Logger;
 import com.scwang.smartrefresh.header.PhoenixHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -32,16 +32,12 @@ import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
 
 /**
  * @Auther 獠牙血狼
@@ -180,79 +176,53 @@ public class CategoryFragment extends BaseFragment<HomeFragmentCategoryBinding> 
     }
 
     public void loadData() {
-        Random r = new Random();
         switch (index) {
             case 0:
-                BmobQuery<RecommendBean> recommendBmobQuery = new BmobQuery<>();
-                recommendBmobQuery
-                        .setSkip(firstNumber)
-                        .setLimit(10)
-                        .findObjects(new FindListener<RecommendBean>() {
-                            @Override
-                            public void done(List<RecommendBean> list, BmobException e) {
-                                if (e == null) {
-                                    if (list.size() > 0) {
-                                        recommendList.addAll(list);
-                                        firstNumber += 10;
-                                        adapter.notifyDataSetChanged();
-                                    } else {
-                                        BD.refreshLayout.finishLoadMore();
-                                        ToastUtils.showShort("已加载全部内容");
-                                    }
-                                } else {
-                                    ToastUtils.showShort(e.getMessage());
-                                }
-                            }
-                        });
+                ApiUtils.getRecommend(firstNumber, new ApiUtils.RecommendListener() {
+                    @Override
+                    public void success(List<RecommendBean> list) {
+                        if (list.size() > 0) {
+                            recommendList.addAll(list);
+                            firstNumber += 10;
+                            adapter.notifyDataSetChanged();
+                        } else {
+                            BD.refreshLayout.finishLoadMore();
+                            ToastUtils.showShort("已加载全部内容");
+                        }
+                    }
+                });
                 break;
             case 1:
             case 2:
-                BmobQuery<HotAndNewsBean> hotAndNewsBmobQuery = new BmobQuery<>();
-                hotAndNewsBmobQuery
-                        .setSkip(firstNumber)
-                        .setLimit(10)
-                        .findObjects(new FindListener<HotAndNewsBean>() {
-                            @Override
-                            public void done(List<HotAndNewsBean> list, BmobException e) {
-                                if (e == null) {
-                                    Logger.e("wolf:"+list.size());
-                                    if (list.size() > 0) {
-                                        hotAndNewsList.addAll(list);
-                                        firstNumber += 10;
-                                        adapter.notifyDataSetChanged();
-                                    } else {
-                                        BD.refreshLayout.finishLoadMore();
-                                        ToastUtils.showShort("已加载全部内容");
-                                    }
-                                } else {
-                                    ToastUtils.showShort(e.getMessage());
-                                }
-                            }
-                        });
+                ApiUtils.getHotAndNews(firstNumber, new ApiUtils.HotAndNewsListener() {
+                    @Override
+                    public void success(List<HotAndNewsBean> list) {
+                        if (list.size() > 0) {
+                            hotAndNewsList.addAll(list);
+                            firstNumber += 10;
+                            adapter.notifyDataSetChanged();
+                        } else {
+                            BD.refreshLayout.finishLoadMore();
+                            ToastUtils.showShort("已加载全部内容");
+                        }
+                    }
+                });
                 break;
             default:
-                BmobQuery<GeneralBean> GeneralBeanBmobQuery = new BmobQuery<>();
-                GeneralBeanBmobQuery
-                        .setSkip(firstNumber)
-                        .setLimit(10)
-                        .findObjects(new FindListener<GeneralBean>() {
-                            @Override
-                            public void done(List<GeneralBean> list, BmobException e) {
-                                if (e == null) {
-                                    Logger.e("wolf:"+list.size());
-                                    if (list.size() > 0) {
-                                        generalList.addAll(list);
-                                        firstNumber += 10;
-                                        adapter.notifyDataSetChanged();
-                                    } else {
-                                        BD.refreshLayout.finishLoadMore();
-                                        ToastUtils.showShort("已加载全部内容");
-                                    }
-                                } else {
-                                    ToastUtils.showShort(e.getMessage());
-                                }
-                            }
-                        });
+                ApiUtils.getDefault(firstNumber, new ApiUtils.DefaultListener() {
+                    @Override
+                    public void success(List<GeneralBean> list) {
+                        if (list.size() > 0) {
+                            generalList.addAll(list);
+                            firstNumber += 10;
+                            adapter.notifyDataSetChanged();
+                        } else {
+                            BD.refreshLayout.finishLoadMore();
+                            ToastUtils.showShort("已加载全部内容");
+                        }
+
+                    }
+                });
                 break;
         }
     }

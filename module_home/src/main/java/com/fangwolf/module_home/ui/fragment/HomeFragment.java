@@ -8,12 +8,12 @@ import android.view.View;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.fangwolf.library_base.base.BaseFragment;
 import com.fangwolf.library_base.router.RouterFragmentPath;
-import com.fangwolf.library_base.utils.ToastUtils;
 import com.fangwolf.module_home.R;
 import com.fangwolf.module_home.adapter.VPHomeAdapter;
 import com.fangwolf.module_home.bean.CategoryBean;
 import com.fangwolf.module_home.databinding.HomeFragmentHomeBinding;
 import com.fangwolf.module_home.event.RefreshEvent;
+import com.fangwolf.module_home.sundries.ApiUtils;
 import com.fangwolf.module_home.sundries.ScaleTransitionPagerTitleView;
 
 import net.lucode.hackware.magicindicator.ViewPagerHelper;
@@ -28,10 +28,6 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
 
 /**
  * @Auther 獠牙血狼
@@ -51,17 +47,12 @@ public class HomeFragment extends BaseFragment<HomeFragmentHomeBinding> {
     @Override
     public void initView() {
         mDataList = new ArrayList<>();
-        BmobQuery<CategoryBean> categoryBmobQuery = new BmobQuery<>();
-        categoryBmobQuery.findObjects(new FindListener<CategoryBean>() {
+        ApiUtils.getCategory(new ApiUtils.CategoryListener() {
             @Override
-            public void done(List<CategoryBean> list, BmobException e) {
-                if (e == null) {
-                    mDataList.addAll(list);
-                    BD.viewPager.setAdapter(new VPHomeAdapter(getChildFragmentManager(), BD.viewPager, mDataList));
-                    initMagicIndicator();
-                } else {
-                    ToastUtils.showShort(e.getMessage());
-                }
+            public void success(List<CategoryBean> list) {
+                mDataList.addAll(list);
+                BD.viewPager.setAdapter(new VPHomeAdapter(getChildFragmentManager(), BD.viewPager, mDataList));
+                initMagicIndicator();
             }
         });
     }
