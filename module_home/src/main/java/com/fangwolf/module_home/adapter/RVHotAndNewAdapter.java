@@ -27,10 +27,13 @@ public class RVHotAndNewAdapter extends BaseQuickAdapter<HotAndNewsBean, BaseVie
                 .addOnClickListener(R.id.btn_like, R.id.btn_dislike);
         switch (item.getCategoryId()) {
             case "44":
+                helper.setImageResource(R.id.iv_logo, R.mipmap.img_android);
                 break;
             case "55":
+                helper.setImageResource(R.id.iv_logo, R.mipmap.img_java);
                 break;
             case "66":
+                helper.setImageResource(R.id.iv_logo, R.mipmap.img_flutter);
                 break;
             default:
                 break;
