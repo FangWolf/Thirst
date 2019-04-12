@@ -11,6 +11,7 @@ import java.util.List;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.UpdateListener;
 
 /**
  * @Auther 獠牙血狼
@@ -22,6 +23,8 @@ public class ApiUtils {
     private static RecommendListener recommendListener;
     private static HotAndNewsListener hotAndNewsListener;
     private static DefaultListener defaultListener;
+
+    private static IsLikeListener isLikeListener;
 
     /**
      * 首页分类
@@ -115,6 +118,21 @@ public class ApiUtils {
                 });
     }
 
+    public static void likeIt(List<HotAndNewsBean> list, int position, IsLikeListener likeListener) {
+        isLikeListener = likeListener;
+        list.get(position).update(list.get(position).getObjectId(), new UpdateListener() {
+            @Override
+            public void done(BmobException e) {
+                if (e == null) {
+                    isLikeListener.success();
+                } else {
+                    ToastUtils.showShort("更新失败：" + e.getMessage());
+                }
+            }
+
+        });
+    }
+
     public interface CategoryListener {
         void success(List<CategoryBean> list);
     }
@@ -130,4 +148,9 @@ public class ApiUtils {
     public interface DefaultListener {
         void success(List<GeneralBean> list);
     }
+
+    public interface IsLikeListener {
+        void success();
+    }
+
 }

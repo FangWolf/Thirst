@@ -100,7 +100,7 @@ public class CategoryFragment extends BaseFragment<HomeFragmentCategoryBinding> 
                 adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
                     @Override
                     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                        ToastUtils.showShort(position);
+                        doYouLike(view, position);
                     }
                 });
                 break;
@@ -225,6 +225,30 @@ public class CategoryFragment extends BaseFragment<HomeFragmentCategoryBinding> 
                 });
                 break;
         }
+    }
+
+    /**
+     * 点击热门和推荐的喜欢或者不喜欢
+     *
+     * @param view
+     * @param position
+     */
+    private void doYouLike(View view, final int position) {
+        final String tip;
+        if (view.getId() == R.id.btn_like) {
+            tip = "感谢你的喜欢";
+            hotAndNewsList.get(position).setVoteNumber(hotAndNewsList.get(position).getVoteNumber() + 1);
+        } else {
+            tip = "我们会继续努力";
+            hotAndNewsList.get(position).setVoteNumber(hotAndNewsList.get(position).getVoteNumber() - 1);
+        }
+        ApiUtils.likeIt(hotAndNewsList, position, new ApiUtils.IsLikeListener() {
+            @Override
+            public void success() {
+                adapter.notifyItemChanged(position);
+                ToastUtils.showShort(tip);
+            }
+        });
     }
 
     @Subscribe
