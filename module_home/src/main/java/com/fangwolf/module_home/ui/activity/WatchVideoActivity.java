@@ -15,7 +15,9 @@ import com.fangwolf.library_base.base.BaseActivity;
 import com.fangwolf.library_base.router.RouterActivityPath;
 import com.fangwolf.module_home.R;
 import com.fangwolf.module_home.adapter.VPWatchVideoAdapter;
+import com.fangwolf.module_home.bean.VideosBean;
 import com.fangwolf.module_home.databinding.HomeActivityWatchVideoBinding;
+import com.fangwolf.module_home.sundries.ApiUtils;
 import com.fangwolf.module_home.sundries.ScaleTransitionPagerTitleView;
 import com.jaeger.library.StatusBarUtil;
 import com.shuyu.gsyvideoplayer.GSYVideoManager;
@@ -44,7 +46,9 @@ import androidx.core.view.ViewCompat;
 @Route(path = RouterActivityPath.Home.WATCH_VIDEO)
 public class WatchVideoActivity extends BaseActivity<HomeActivityWatchVideoBinding> {
     private List<String> mDataList;
-    private String url = "http://upos-hz-mirrorwcsu.acgvideo.com/upgcxcode/61/30/41613061/41613061-1-208.mp4?ua=tvproj&deadline=1554019048&gen=playurl&nbs=1&oi=2501663261&os=wcsu&trid=e676276ddc75430ba96f111f804eb972&uipk=5&upsig=10f9f874febbcba345c36a06374185fe";
+    private String videoId;
+    private String url;
+    //    = "http://upos-hz-mirrorwcsu.acgvideo.com/upgcxcode/61/30/41613061/41613061-1-208.mp4?ua=tvproj&deadline=1554019048&gen=playurl&nbs=1&oi=2501663261&os=wcsu&trid=e676276ddc75430ba96f111f804eb972&uipk=5&upsig=10f9f874febbcba345c36a06374185fe";
     private OrientationUtils orientationUtils;
     private boolean isTransition;
     private Transition transition;
@@ -66,7 +70,22 @@ public class WatchVideoActivity extends BaseActivity<HomeActivityWatchVideoBindi
     @Override
     protected void initData(Bundle savedInstanceState) {
         isTransition = getIntent().getBooleanExtra(TRANSITION, false);
-        initVideo();
+        videoId = getIntent().getStringExtra("videoId");
+        showLoading();
+        findVideo();
+    }
+
+    /**
+     * 查询视频
+     */
+    private void findVideo() {
+        ApiUtils.getVideo(videoId, new ApiUtils.VideoListener() {
+            @Override
+            public void success(List<VideosBean> list) {
+                dismissLoading();
+                initVideo(list.get(0));
+            }
+        });
     }
 
     @Override
@@ -104,7 +123,7 @@ public class WatchVideoActivity extends BaseActivity<HomeActivityWatchVideoBindi
     private void initMagicIndicator() {
         mDataList = new ArrayList<>();
         mDataList.add("介绍");
-        mDataList.add("评论");
+        mDataList.add("相关");
         BD.magicIndicator.setBackgroundColor(Color.WHITE);
         CommonNavigator commonNavigator = new CommonNavigator(this);
         commonNavigator.setScrollPivotX(0.8f);
@@ -146,13 +165,24 @@ public class WatchVideoActivity extends BaseActivity<HomeActivityWatchVideoBindi
         ViewPagerHelper.bind(BD.magicIndicator, BD.viewPager);
     }
 
-    private void initVideo() {
+    /**
+     * 加载视频
+     *
+     * @param videosBean
+     */
+    private void initVideo(VideosBean videosBean) {
         //设置视频url
-        BD.videoPlayer.setUp(url, true, "测试视频");
+        BD.videoPlayer.setUp(videosBean.getVideoURL(), true, videosBean.getTitle());
         //增加封面
         ImageView imageView = new ImageView(this);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        imageView.setImageResource(R.mipmap.ic_launcher_round);
+        if (videosBean.getCategoryId().equals("44")) {
+            imageView.setImageResource(R.mipmap.img_video_android);
+        } else if (videosBean.getCategoryId().equals("55")) {
+            imageView.setImageResource(R.mipmap.img_video_java);
+        } else {
+            imageView.setImageResource(R.mipmap.img_video_flutter);
+        }
         BD.videoPlayer.setThumbImageView(imageView);
         //设置旋转
         orientationUtils = new OrientationUtils(this, BD.videoPlayer);

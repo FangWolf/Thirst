@@ -41,7 +41,7 @@ public class BaseModuleInit implements IModuleInit {
             // This process is dedicated to LeakCanary for heap analysis.
             // You should not init your app in this process.
         }
-        LeakCanary.install(application);
+//        LeakCanary.install(application);
         Logger.e("基础层初始化 -- onInitBehind");
         return false;
     }

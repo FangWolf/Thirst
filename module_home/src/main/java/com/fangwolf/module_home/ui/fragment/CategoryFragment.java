@@ -52,7 +52,7 @@ public class CategoryFragment extends BaseFragment<HomeFragmentCategoryBinding> 
     private List<GeneralBean> generalList;
     private BaseQuickAdapter adapter;
     private String name;
-    private int id;
+    private int categoryId;
     private int index;
     private int firstNumber = 0;
 
@@ -66,7 +66,7 @@ public class CategoryFragment extends BaseFragment<HomeFragmentCategoryBinding> 
         registerEventBus();
         Bundle bundle = getArguments();
         index = bundle.getInt("index");
-        id = bundle.getInt("id");
+        categoryId = bundle.getInt("id");
         name = bundle.getString("name");
         initRV();
     }
@@ -114,9 +114,17 @@ public class CategoryFragment extends BaseFragment<HomeFragmentCategoryBinding> 
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                String videoId = null;
+                if (categoryId == 11) {
+                    videoId = recommendList.get(position).getVideoId();
+                } else if (categoryId == 22 || categoryId == 33) {
+                    videoId = hotAndNewsList.get(position).getVideoId();
+                } else {
+                    videoId = generalList.get(position).getVideoId();
+                }
                 ARouter.getInstance()
                         .build(RouterActivityPath.Home.WATCH_VIDEO)
-                        .withInt("position", position)
+                        .withString("videoId", videoId)
                         .navigation();
             }
         });
@@ -209,7 +217,7 @@ public class CategoryFragment extends BaseFragment<HomeFragmentCategoryBinding> 
                 });
                 break;
             default:
-                ApiUtils.getDefault(firstNumber, new ApiUtils.DefaultListener() {
+                ApiUtils.getDefault(categoryId, firstNumber, new ApiUtils.DefaultListener() {
                     @Override
                     public void success(List<GeneralBean> list) {
                         if (list.size() > 0) {

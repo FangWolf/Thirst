@@ -5,6 +5,7 @@ import com.fangwolf.module_home.bean.CategoryBean;
 import com.fangwolf.module_home.bean.GeneralBean;
 import com.fangwolf.module_home.bean.HotAndNewsBean;
 import com.fangwolf.module_home.bean.RecommendBean;
+import com.fangwolf.module_home.bean.VideosBean;
 
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class ApiUtils {
     private static DefaultListener defaultListener;
 
     private static IsLikeListener isLikeListener;
+    private static VideoListener videoListener;
 
     /**
      * 首页分类
@@ -100,10 +102,11 @@ public class ApiUtils {
      * @param firstNumber
      * @param listener
      */
-    public static void getDefault(int firstNumber, DefaultListener listener) {
+    public static void getDefault(int categoryId, int firstNumber, DefaultListener listener) {
         defaultListener = listener;
         BmobQuery<GeneralBean> GeneralBeanBmobQuery = new BmobQuery<>();
         GeneralBeanBmobQuery
+                .addWhereEqualTo("categoryId", String.valueOf(categoryId))
                 .setSkip(firstNumber)
                 .setLimit(10)
                 .findObjects(new FindListener<GeneralBean>() {
@@ -133,6 +136,29 @@ public class ApiUtils {
         });
     }
 
+    /**
+     * 查找视频
+     *
+     * @param videoId
+     */
+    public static void getVideo(String videoId, VideoListener listener) {
+        videoListener = listener;
+        BmobQuery<VideosBean> videosBmobQuery = new BmobQuery<>();
+        videosBmobQuery
+                .addWhereEqualTo("videoId", videoId)
+                .findObjects(new FindListener<VideosBean>() {
+                    @Override
+                    public void done(List<VideosBean> list, BmobException e) {
+                        if (e == null) {
+                            videoListener.success(list);
+                        } else {
+                            ToastUtils.showShort(e.getMessage());
+                        }
+                    }
+                });
+
+    }
+
     public interface CategoryListener {
         void success(List<CategoryBean> list);
     }
@@ -151,6 +177,10 @@ public class ApiUtils {
 
     public interface IsLikeListener {
         void success();
+    }
+
+    public interface VideoListener {
+        void success(List<VideosBean> list);
     }
 
 }
