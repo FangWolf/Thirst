@@ -75,11 +75,11 @@ public class MainActivity extends BaseActivity<MainActivityMainBinding> {
      */
     private void initBottomTab() {
         navigationController = BD.pagerBottomTab.material()
-                .addItem(R.mipmap.ic_launcher, "首页")
-                .addItem(R.mipmap.ic_launcher, "资讯")
-                .addItem(R.mipmap.ic_launcher, "发布")
-                .addItem(R.mipmap.ic_launcher, "讨论")
-                .addItem(R.mipmap.ic_launcher, "我的")
+                .addItem(R.mipmap.ic_home, "首页")
+                .addItem(R.mipmap.ic_news, "资讯")
+                .addItem(R.mipmap.ic_post, "发布")
+                .addItem(R.mipmap.ic_chat, "讨论")
+                .addItem(R.mipmap.ic_mine, "我的")
                 .build();
         //底部按钮的点击事件监听
         navigationController.addTabItemSelectedListener(new OnTabItemSelectedListener() {
