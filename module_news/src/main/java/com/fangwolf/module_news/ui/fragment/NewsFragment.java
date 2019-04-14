@@ -9,6 +9,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.fangwolf.library_base.base.BaseFragment;
 import com.fangwolf.library_base.router.RouterFragmentPath;
 import com.fangwolf.module_news.R;
+import com.fangwolf.module_news.adapter.VPNewsAdapter;
 import com.fangwolf.module_news.databinding.NewsFragmentNewsBinding;
 
 import net.lucode.hackware.magicindicator.ViewPagerHelper;
@@ -16,7 +17,6 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigat
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.CommonNavigatorAdapter;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerIndicator;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView;
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.BezierPagerIndicator;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.TriangularPagerIndicator;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.SimplePagerTitleView;
 
@@ -40,9 +40,16 @@ public class NewsFragment extends BaseFragment<NewsFragmentNewsBinding> {
     @Override
     public void initView() {
         mDataList = new ArrayList<>();
-        mDataList.add("aaa");
-        mDataList.add("bbb");
-        mDataList.add("ccc");
+        mDataList.add("全部");
+        mDataList.add("瞎推荐");
+        mDataList.add("Android");
+        mDataList.add("前端");
+        mDataList.add("IOS");
+        mDataList.add("拓展资源");
+        mDataList.add("App");
+        mDataList.add("休息视频");
+        mDataList.add("福利");
+        BD.viewPager.setAdapter(new VPNewsAdapter(getChildFragmentManager(), BD.viewPager, mDataList));
         initMagicIndicator();
     }
 

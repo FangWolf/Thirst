@@ -5,6 +5,8 @@ import android.content.Context;
 import android.os.Bundle;
 
 
+import com.fangwolf.module_news.ui.fragment.CategoryFragment;
+
 import java.util.List;
 import java.util.Stack;
 
@@ -19,12 +21,12 @@ import androidx.viewpager.widget.ViewPager;
  * @Desc 资讯的viewPage适配器
  */
 
-public class NewsViewPageAdapter extends FragmentPagerAdapter {
+public class VPNewsAdapter extends FragmentPagerAdapter {
     private Stack<Fragment> fragStack = new Stack<>();
     private List<String> categoryList;
     private Context context;
 
-    public NewsViewPageAdapter(FragmentManager fm, ViewPager viewPager, List<String> categoryList) {
+    public VPNewsAdapter(FragmentManager fm, ViewPager viewPager, List<String> categoryList) {
         super(fm);
         this.context = viewPager.getContext();
         viewPager.setOffscreenPageLimit(1);
@@ -49,11 +51,11 @@ public class NewsViewPageAdapter extends FragmentPagerAdapter {
     private void initFrag() {
         fragStack.clear();
         for (int i = 0; i < categoryList.size(); i++) {
-//            Bundle bundle = new Bundle();
-//            bundle.putInt("index", i);
+            Bundle bundle = new Bundle();
+            bundle.putInt("index", i);
 //            bundle.putInt("id", categoryList.get(i).getId());
 //            bundle.putString("name", categoryList.get(i).getName());
-//            fragStack.add(Fragment.instantiate(context, CategoryFragment.class.getName(), bundle));
+            fragStack.add(Fragment.instantiate(context, CategoryFragment.class.getName(), bundle));
         }
     }
 
