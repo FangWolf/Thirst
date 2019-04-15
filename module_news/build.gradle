@@ -23,4 +23,6 @@ android {
 dependencies {
     api project(':library_base')
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
+    implementation rootProject.ext.dependencies["retrofit:converter-gson"]
+    implementation rootProject.ext.dependencies["retrofit:adapter-rxjava"]
 }

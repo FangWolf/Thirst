@@ -60,6 +60,8 @@ ext {
             "glide:compiler"                 : 'com.github.bumptech.glide:compiler:4.9.0',
             //网络
             "retrofit"                       : 'com.squareup.retrofit2:retrofit:2.5.0',
+            "retrofit:converter-gson"        : 'com.squareup.retrofit2:converter-gson:2.5.0',
+            "retrofit:adapter-rxjava"        : 'com.squareup.retrofit2:adapter-rxjava:2.5.0',
             //下拉刷新
             "SmartRefreshLayout"             : 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-andx-4',
             "SmartRefreshHeader"             : 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-andx-4',

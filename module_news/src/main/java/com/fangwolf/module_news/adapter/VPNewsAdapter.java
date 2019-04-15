@@ -4,7 +4,6 @@ package com.fangwolf.module_news.adapter;
 import android.content.Context;
 import android.os.Bundle;
 
-
 import com.fangwolf.module_news.ui.fragment.CategoryFragment;
 
 import java.util.List;
@@ -23,15 +22,15 @@ import androidx.viewpager.widget.ViewPager;
 
 public class VPNewsAdapter extends FragmentPagerAdapter {
     private Stack<Fragment> fragStack = new Stack<>();
-    private List<String> categoryList;
+    private List<String> typeList;
     private Context context;
 
-    public VPNewsAdapter(FragmentManager fm, ViewPager viewPager, List<String> categoryList) {
+    public VPNewsAdapter(FragmentManager fm, ViewPager viewPager, List<String> typeList) {
         super(fm);
         this.context = viewPager.getContext();
         viewPager.setOffscreenPageLimit(1);
         viewPager.setAdapter(this);
-        this.categoryList = categoryList;
+        this.typeList = typeList;
         initFrag();
     }
 
@@ -45,16 +44,15 @@ public class VPNewsAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return categoryList == null ? 0 : categoryList.size();
+        return typeList == null ? 0 : typeList.size();
     }
 
     private void initFrag() {
         fragStack.clear();
-        for (int i = 0; i < categoryList.size(); i++) {
+        for (int i = 0; i < typeList.size(); i++) {
             Bundle bundle = new Bundle();
             bundle.putInt("index", i);
-//            bundle.putInt("id", categoryList.get(i).getId());
-//            bundle.putString("name", categoryList.get(i).getName());
+            bundle.putString("type", typeList.get(i));
             fragStack.add(Fragment.instantiate(context, CategoryFragment.class.getName(), bundle));
         }
     }

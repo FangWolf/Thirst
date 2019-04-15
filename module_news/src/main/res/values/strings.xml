@@ -1,3 +1,4 @@
 <resources>
     <string name="news_app_name">module_news</string>
+    <string name="news_vu">Create By %1$s On %2$s</string>
 </resources>

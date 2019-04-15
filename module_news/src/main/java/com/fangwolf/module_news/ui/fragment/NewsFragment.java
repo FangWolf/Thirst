@@ -44,7 +44,7 @@ public class NewsFragment extends BaseFragment<NewsFragmentNewsBinding> {
         mDataList.add("瞎推荐");
         mDataList.add("Android");
         mDataList.add("前端");
-        mDataList.add("IOS");
+        mDataList.add("iOS");
         mDataList.add("拓展资源");
         mDataList.add("App");
         mDataList.add("休息视频");
