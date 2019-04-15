@@ -8,13 +8,19 @@
     android:orientation="vertical"
     android:padding="7dp">
 
+    <ImageView
+        android:id="@+id/iv_mz"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:scaleType="centerCrop"/>
+
     <TextView
         android:id="@+id/tv_desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/main_text_color"
         android:textSize="16dp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tv_vu"
@@ -22,7 +28,7 @@
         android:layout_height="wrap_content"
         android:gravity="end"
         android:text="@string/news_vu"
-        android:textStyle="italic"
         android:textColor="@color/main_color_dark_brown"
-        android:textSize="12dp" />
+        android:textSize="12dp"
+        android:textStyle="italic" />
 </LinearLayout>

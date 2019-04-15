@@ -36,4 +36,13 @@ public class RouterActivityPath {
         public static final String WATCH_VIDEO = HOME_BASE + "/video";
     }
 
+    /**
+     * 资讯组件
+     */
+    public static class News {
+        private static final String NEWS_BASE = "/Nome";
+        //看文章
+        public static final String WATCH_ARTICLE = NEWS_BASE + "/article";
+    }
+
 }

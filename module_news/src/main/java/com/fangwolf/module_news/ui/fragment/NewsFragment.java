@@ -47,7 +47,7 @@ public class NewsFragment extends BaseFragment<NewsFragmentNewsBinding> {
         mDataList.add("iOS");
         mDataList.add("拓展资源");
         mDataList.add("App");
-        mDataList.add("休息视频");
+//        mDataList.add("休息视频");
         mDataList.add("福利");
         BD.viewPager.setAdapter(new VPNewsAdapter(getChildFragmentManager(), BD.viewPager, mDataList));
         initMagicIndicator();

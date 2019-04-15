@@ -2,8 +2,10 @@ package com.fangwolf.module_news.ui.fragment;
 
 import android.view.View;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.fangwolf.library_base.base.BaseFragment;
+import com.fangwolf.library_base.base.LazyFragment;
+import com.fangwolf.library_base.router.RouterActivityPath;
 import com.fangwolf.library_base.utils.ToastUtils;
 import com.fangwolf.module_news.R;
 import com.fangwolf.module_news.adapter.CategoryAdapter;
@@ -19,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,7 +35,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * @Date 2019/4/13
  * @Desc 分类的fragment
  */
-public class CategoryFragment extends BaseFragment<NewsFragmentCategoryBinding> {
+public class CategoryFragment extends LazyFragment<NewsFragmentCategoryBinding> {
     private CategoryAdapter adapter;
     private List<DataBean.ResultsBean> list;
     private String type;
@@ -40,6 +43,7 @@ public class CategoryFragment extends BaseFragment<NewsFragmentCategoryBinding> 
     private Retrofit retrofit;
     private DataService service;
     private Call<DataBean> call;
+    private boolean isWelfare = false;
 
     @Override
     public int getLayoutId() {
@@ -52,13 +56,20 @@ public class CategoryFragment extends BaseFragment<NewsFragmentCategoryBinding> 
         if (type.equals("全部")) {
             type = "all";
         }
+        if (type.equals("福利")) {
+            isWelfare = true;
+        }
         page = 1;
         initApi();
-        initRV();
     }
 
     @Override
     public void initData() {
+        initRV();
+    }
+
+    @Override
+    protected void onLazyLoad() {
         initRL();
     }
 
@@ -81,14 +92,22 @@ public class CategoryFragment extends BaseFragment<NewsFragmentCategoryBinding> 
 
     private void initRV() {
         list = new ArrayList<>();
-        adapter = new CategoryAdapter(R.layout.news_item_category, list);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        BD.recyclerView.setLayoutManager(layoutManager);
+        adapter = new CategoryAdapter(R.layout.news_item_category, list, isWelfare);
+        if (isWelfare) {
+            GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
+            BD.recyclerView.setLayoutManager(layoutManager);
+        } else {
+            LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+            BD.recyclerView.setLayoutManager(layoutManager);
+        }
         BD.recyclerView.setAdapter(adapter);
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                ToastUtils.showShort("wolf" + position);
+                ARouter.getInstance()
+                        .build(RouterActivityPath.News.WATCH_ARTICLE)
+                        .withString("url", list.get(position).getUrl())
+                        .navigation();
             }
         });
     }
