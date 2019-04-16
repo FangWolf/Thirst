@@ -1,4 +1,4 @@
-package com.fangwolf.module_chat;
+package com.fangwolf.module_chat.ui;
 
 
 import android.view.View;
@@ -6,6 +6,7 @@ import android.view.View;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.fangwolf.library_base.base.BaseFragment;
 import com.fangwolf.library_base.router.RouterFragmentPath;
+import com.fangwolf.module_chat.R;
 import com.fangwolf.module_chat.databinding.ChatFragmentChatBinding;
 
 /**
@@ -23,12 +24,13 @@ public class ChatFragment extends BaseFragment<ChatFragmentChatBinding> {
 
     @Override
     public void initView() {
-
-    }
+        getChildFragmentManager()
+                .beginTransaction()
+                .add(R.id.fl, new BlankFragment())
+                .commit();    }
 
     @Override
     public void initData() {
-
     }
 
     @Override

@@ -6,6 +6,7 @@
         <activity android:name=".ui.SplashActivity"></activity>
         <activity
             android:name=".ui.MainActivity"
+            android:theme="@style/activity.Theme"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"></activity>
     </application>

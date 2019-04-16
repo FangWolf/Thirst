@@ -10,6 +10,9 @@ import com.fangwolf.library_base.utils.SPUtils;
 import com.fangwolf.library_base.widget.RxTimer;
 import com.fangwolf.module_main.R;
 import com.fangwolf.module_main.databinding.MainActivitySplashBinding;
+import com.hyphenate.EMCallBack;
+import com.hyphenate.chat.EMClient;
+import com.orhanobut.logger.Logger;
 
 /**
  * @Auther 獠牙血狼
@@ -47,6 +50,23 @@ public class SplashActivity extends BaseActivity<MainActivitySplashBinding> {
             }
         });
         rxTimer.start();
+        // TODO: 2019/4/16 方便测试
+        EMClient.getInstance().login("0002 ", "123456", new EMCallBack() {
+            @Override
+            public void onSuccess() {
+                Logger.e("onSuccess");
+            }
+
+            @Override
+            public void onError(int i, String s) {
+                Logger.e("onError" + s);
+            }
+
+            @Override
+            public void onProgress(int i, String s) {
+                Logger.e("onProgress" + s);
+            }
+        });
     }
 
     private void needToLogin() {

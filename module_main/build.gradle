@@ -22,6 +22,7 @@ android {
 
 dependencies {
     api project(':library_base')
+    implementation project(':library_easeui')
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
     implementation rootProject.ext.dependencies["pager-bottom-tab-strip"]
 }

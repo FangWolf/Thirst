@@ -2,6 +2,7 @@
     package="com.fangwolf.module_news">
 
     <application>
-        <activity android:name=".ui.activity.WebActivity"/>
+        <activity android:name=".ui.activity.WebActivity"
+            android:theme="@style/activity.Theme"/>
     </application>
 </manifest>

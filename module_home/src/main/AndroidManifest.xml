@@ -4,6 +4,7 @@
     <application>
         <activity
             android:name=".ui.activity.WatchVideoActivity"
+            android:theme="@style/activity.Theme"
             android:configChanges="orientation|keyboardHidden|screenSize"></activity>
     </application>
 </manifest>
