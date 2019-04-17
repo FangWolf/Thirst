@@ -1,4 +1,4 @@
-package com.fangwolf.module_chat.ui;
+package com.fangwolf.module_chat.ui.fragment;
 
 
 import android.view.View;
@@ -26,7 +26,7 @@ public class ChatFragment extends BaseFragment<ChatFragmentChatBinding> {
     public void initView() {
         getChildFragmentManager()
                 .beginTransaction()
-                .add(R.id.fl, new BlankFragment())
+                .add(R.id.fl, new ConversationListFragment())
                 .commit();    }
 
     @Override
