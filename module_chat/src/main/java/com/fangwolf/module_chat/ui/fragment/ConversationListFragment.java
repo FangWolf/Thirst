@@ -25,7 +25,7 @@ public class ConversationListFragment extends EaseConversationListFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 EMConversation conversation = conversationListView.getItem(position);
                 String username = conversation.conversationId();
-                startActivity(new Intent(getActivity(), ChatActivity.class).putExtra("id",username));
+                startActivity(new Intent(getActivity(), ChatActivity.class).putExtra("id", username));
             }
         });
     }
