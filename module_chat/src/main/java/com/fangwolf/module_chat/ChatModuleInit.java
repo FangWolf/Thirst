@@ -34,5 +34,6 @@ public class ChatModuleInit implements IModuleInit {
         options.setAutoDownloadThumbnail(true);
         //初始化
         EMClient.getInstance().init(application.getApplicationContext(), options);
+        EaseUtils.getInstance().init(application.getApplicationContext());
     }
 }

@@ -1,13 +1,13 @@
 package com.fangwolf.module_chat.debug;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
 import com.fangwolf.module_chat.R;
 import com.hyphenate.EMCallBack;
 import com.hyphenate.chat.EMClient;
 import com.orhanobut.logger.Logger;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class DebugActivity extends AppCompatActivity {
 
