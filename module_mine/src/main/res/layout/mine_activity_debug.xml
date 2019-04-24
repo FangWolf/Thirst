@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/root"
-        android:name="com.fangwolf.module_mine.MineFragment"
+        android:name="com.fangwolf.module_mine.ui.MineFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

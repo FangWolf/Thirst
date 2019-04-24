@@ -20,7 +20,8 @@
             android:name="design_height_in_dp"
             android:value="760" />
 
-        <activity android:name=".debug.DebugActivity">
+        <activity android:name=".debug.DebugActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
