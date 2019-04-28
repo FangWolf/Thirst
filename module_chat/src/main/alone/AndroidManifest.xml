@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.fangwolf.module_chat">
-
     <application
         android:name="com.fangwolf.library_base.debug.DebugApp"
         android:allowBackup="true"
@@ -12,8 +11,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.activity.ChatActivity"></activity>
-
         <meta-data
             android:name="design_width_in_dp"
             android:value="420" />
@@ -21,9 +18,10 @@
             android:name="design_height_in_dp"
             android:value="760" />
 
-        <activity
-            android:name=".debug.DebugActivity"
-            android:theme="@style/activity.Theme">
+        <activity android:name=".ui.activity.ChatActivity"
+            android:theme="@style/Theme.AppCompat"/>
+        <activity android:name=".debug.DebugActivity"
+            android:theme="@style/Theme.AppCompat">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,24 +33,19 @@
             android:name="cn.bmob.v3.util.BmobContentProvider"
             android:authorities="com.fangwolf.chat.BmobContentProvider" />
 
-        <!--**********************************环信start*************************************-->
-        <uses-library
-            android:name="org.apache.http.legacy"
-            android:required="false" />
-        <!-- 设置环信应用的appkey -->
+        <!-- 设置环信应用的AppKey -->
         <meta-data
             android:name="EASEMOB_APPKEY"
             android:value="1123190320030353#thirst" />
-        <!-- 声明sdk所需的service -->
+        <!-- 声明SDK所需的service SDK核心功能 -->
         <service
             android:name="com.hyphenate.chat.EMChatService"
-            android:exported="true"
-            tools:ignore="ExportedService" />
+            android:exported="true" />
         <service
             android:name="com.hyphenate.chat.EMJobService"
             android:exported="true"
             android:permission="android.permission.BIND_JOB_SERVICE" />
-        <!-- 声明sdk所需的receiver -->
+        <!-- 声明SDK所需的receiver -->
         <receiver android:name="com.hyphenate.chat.EMMonitorReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_REMOVED" />
@@ -65,6 +58,7 @@
                 <action android:name="android.intent.action.USER_PRESENT" />
             </intent-filter>
         </receiver>
+
     </application>
 
 </manifest>

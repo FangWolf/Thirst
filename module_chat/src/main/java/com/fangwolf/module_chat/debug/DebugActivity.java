@@ -1,13 +1,13 @@
 package com.fangwolf.module_chat.debug;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+import android.util.Log;
 
 import com.fangwolf.module_chat.R;
 import com.hyphenate.EMCallBack;
 import com.hyphenate.chat.EMClient;
-import com.orhanobut.logger.Logger;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public class DebugActivity extends AppCompatActivity {
 
@@ -15,20 +15,22 @@ public class DebugActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chat_activity_debug);
-        EMClient.getInstance().login("0002 ", "123456", new EMCallBack() {
+        EMClient.getInstance().login("0002", "123456", new EMCallBack() {
             @Override
             public void onSuccess() {
-                Logger.e("onSuccess");
+                EMClient.getInstance().groupManager().loadAllGroups();
+                EMClient.getInstance().chatManager().loadAllConversations();
+                Log.d("main", "登录聊天服务器成功！");
             }
 
             @Override
-            public void onError(int i, String s) {
-                Logger.e("onError" + s);
+            public void onProgress(int progress, String status) {
+
             }
 
             @Override
-            public void onProgress(int i, String s) {
-                Logger.e("onProgress" + s);
+            public void onError(int code, String message) {
+                Log.d("main", "登录聊天服务器失败！");
             }
         });
     }
