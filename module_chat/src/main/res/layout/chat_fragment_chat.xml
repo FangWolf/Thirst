@@ -4,12 +4,12 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.fangwolf.module_chat.ChatFragment">
+        tools:context="com.fangwolf.module_chat.ui.fragment.ChatFragment">
 
-        <TextView
+        <FrameLayout
+            android:id="@+id/fl_root"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="chat" />
+            android:layout_height="match_parent"/>
 
     </FrameLayout>
 </layout>
