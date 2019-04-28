@@ -1,4 +1,4 @@
-package com.fangwolf.module_chat;
+package com.fangwolf.module_chat.ui.fragment;
 
 
 import android.view.View;
@@ -6,6 +6,7 @@ import android.view.View;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.fangwolf.library_base.base.BaseFragment;
 import com.fangwolf.library_base.router.RouterFragmentPath;
+import com.fangwolf.module_chat.R;
 import com.fangwolf.module_chat.databinding.ChatFragmentChatBinding;
 
 /**

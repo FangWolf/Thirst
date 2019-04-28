@@ -3,6 +3,7 @@ package com.fangwolf.module_chat.ui.activity;
 import android.os.Bundle;
 
 import com.fangwolf.module_chat.R;
+import com.hyphenate.easeui.Constant;
 import com.hyphenate.easeui.EaseConstant;
 import com.hyphenate.easeui.ui.EaseChatFragment;
 
@@ -22,7 +23,7 @@ public class ChatActivity extends AppCompatActivity {
         EaseChatFragment chatFragment = new EaseChatFragment();
         Bundle args = new Bundle();
         args.putInt(EaseConstant.EXTRA_CHAT_TYPE, EaseConstant.CHATTYPE_SINGLE);
-        args.putString(EaseConstant.EXTRA_USER_ID, "t02");
+        args.putString(EaseConstant.EXTRA_USER_ID, getIntent().getStringExtra(Constant.EXTRA_USER_ID));
         chatFragment.setArguments(args);
 
         getSupportFragmentManager().beginTransaction()

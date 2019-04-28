@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.fangwolf.module_chat">
+
     <application
         android:name="com.fangwolf.library_base.debug.DebugApp"
         android:allowBackup="true"
@@ -18,10 +19,12 @@
             android:name="design_height_in_dp"
             android:value="760" />
 
-        <activity android:name=".ui.activity.ChatActivity"
-            android:theme="@style/Theme.AppCompat"/>
-        <activity android:name=".debug.DebugActivity"
-            android:theme="@style/Theme.AppCompat">
+        <activity
+            android:name=".ui.activity.ChatActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".debug.DebugActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,6 +36,7 @@
             android:name="cn.bmob.v3.util.BmobContentProvider"
             android:authorities="com.fangwolf.chat.BmobContentProvider" />
 
+        <!--****************************环信start***********************-->
         <!-- 设置环信应用的AppKey -->
         <meta-data
             android:name="EASEMOB_APPKEY"
@@ -58,6 +62,7 @@
                 <action android:name="android.intent.action.USER_PRESENT" />
             </intent-filter>
         </receiver>
+        <!--****************************环信end***********************-->
 
     </application>
 

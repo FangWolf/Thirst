@@ -6,6 +6,7 @@ import android.widget.AdapterView;
 
 import com.fangwolf.module_chat.ui.activity.ChatActivity;
 import com.hyphenate.chat.EMConversation;
+import com.hyphenate.easeui.Constant;
 import com.hyphenate.easeui.ui.EaseConversationListFragment;
 
 /**
@@ -22,7 +23,7 @@ public class ConversationListFragment extends EaseConversationListFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 EMConversation conversation = conversationListView.getItem(position);
                 String username = conversation.conversationId();
-                startActivity(new Intent(getActivity(), ChatActivity.class).putExtra("id", username));
+                startActivity(new Intent(getActivity(), ChatActivity.class).putExtra(Constant.EXTRA_USER_ID, username));
             }
         });
     }
