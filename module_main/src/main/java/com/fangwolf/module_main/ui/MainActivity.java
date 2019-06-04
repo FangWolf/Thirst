@@ -3,6 +3,9 @@ package com.fangwolf.module_main.ui;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.fangwolf.library_base.base.BaseActivity;
@@ -14,8 +17,6 @@ import com.fangwolf.module_main.databinding.MainActivityMainBinding;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import me.majiajie.pagerbottomtabstrip.NavigationController;
 import me.majiajie.pagerbottomtabstrip.listener.OnTabItemSelectedListener;
 
@@ -77,7 +78,7 @@ public class MainActivity extends BaseActivity<MainActivityMainBinding> {
         navigationController = BD.pagerBottomTab.material()
                 .addItem(R.mipmap.ic_home, "首页")
                 .addItem(R.mipmap.ic_news, "资讯")
-                .addItem(R.mipmap.ic_post, "发布")
+//                .addItem(R.mipmap.ic_post, "发布")
                 .addItem(R.mipmap.ic_chat, "讨论")
                 .addItem(R.mipmap.ic_mine, "我的")
                 .build();
@@ -85,19 +86,19 @@ public class MainActivity extends BaseActivity<MainActivityMainBinding> {
         navigationController.addTabItemSelectedListener(new OnTabItemSelectedListener() {
             @Override
             public void onSelected(int index, int old) {
-                switch (index) {
-                    case 0:
-                    case 1:
-                    case 3:
-                    case 4:
-                        changePage(index);
-                        break;
-                    case 2:
-                        postDialog.show(getSupportFragmentManager(), "post");
-                        navigationController.setSelect(old);
-                        break;
-
-                }
+//                switch (index) {
+//                    case 0:
+//                    case 1:
+//                    case 3:
+//                    case 4:
+//                        changePage(index);
+//                        break;
+//                    case 2:
+//                        postDialog.show(getSupportFragmentManager(), "post");
+//                        navigationController.setSelect(old);
+//                        break;
+//                }
+                changePage(index);
             }
 
             @Override
