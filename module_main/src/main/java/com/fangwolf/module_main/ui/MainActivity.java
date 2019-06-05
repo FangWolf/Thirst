@@ -117,9 +117,9 @@ public class MainActivity extends BaseActivity<MainActivityMainBinding> {
      * @param index
      */
     private void changePage(int index) {
-        if (index > 2) {
-            index -= 1;
-        }
+//        if (index > 2) {
+//            index -= 1;
+//        }
         Fragment currentFragment = mFragments.get(index);
         if (currentFragment != null) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
