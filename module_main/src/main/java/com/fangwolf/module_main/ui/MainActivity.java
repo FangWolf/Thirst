@@ -103,9 +103,9 @@ public class MainActivity extends BaseActivity<MainActivityMainBinding> {
 
             @Override
             public void onRepeat(int index) {
-                if (index == 2) {
-                    postDialog.show(getSupportFragmentManager(), "post");
-                }
+//                if (index == 2) {
+//                    postDialog.show(getSupportFragmentManager(), "post");
+//                }
             }
         });
     }
