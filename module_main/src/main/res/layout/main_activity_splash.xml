@@ -9,9 +9,9 @@
         <ImageView
             android:id="@+id/iv_splash"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="600dp"
             android:scaleType="centerCrop"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/splash" />
 
         <TextView
             android:id="@+id/tv_time"

@@ -51,22 +51,22 @@ public class SplashActivity extends BaseActivity<MainActivitySplashBinding> {
         });
         rxTimer.start();
         // TODO: 2019/4/16 方便测试
-        EMClient.getInstance().login("0002 ", "123456", new EMCallBack() {
-            @Override
-            public void onSuccess() {
-                Logger.e("onSuccess");
-            }
-
-            @Override
-            public void onError(int i, String s) {
-                Logger.e("onError" + s);
-            }
-
-            @Override
-            public void onProgress(int i, String s) {
-                Logger.e("onProgress" + s);
-            }
-        });
+//        EMClient.getInstance().login("0002 ", "123456", new EMCallBack() {
+//            @Override
+//            public void onSuccess() {
+//                Logger.e("onSuccess");
+//            }
+//
+//            @Override
+//            public void onError(int i, String s) {
+//                Logger.e("onError" + s);
+//            }
+//
+//            @Override
+//            public void onProgress(int i, String s) {
+//                Logger.e("onProgress" + s);
+//            }
+//        });
     }
 
     private void needToLogin() {
