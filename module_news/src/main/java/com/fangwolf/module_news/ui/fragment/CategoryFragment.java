@@ -1,6 +1,7 @@
 package com.fangwolf.module_news.ui.fragment;
 
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -23,6 +24,7 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -101,6 +103,7 @@ public class CategoryFragment extends LazyFragment<NewsFragmentCategoryBinding> 
             BD.recyclerView.setLayoutManager(layoutManager);
         }
         BD.recyclerView.setAdapter(adapter);
+        adapter.setEmptyView(getLayoutInflater().inflate(R.layout.rv_empty, (ViewGroup) BD.recyclerView.getParent(), false));
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {

@@ -26,6 +26,7 @@ public class WebActivity extends BaseActivity<NewsActivityWebBinding> {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
+        setonClickListener(BD.btnClose);
         BD.webView.getSettings().setSupportZoom(true);
         BD.webView.getSettings().setBuiltInZoomControls(true);
         url = getIntent().getStringExtra("url");
@@ -39,6 +40,8 @@ public class WebActivity extends BaseActivity<NewsActivityWebBinding> {
 
     @Override
     public void onClick(View v) {
-
+        if (v.getId() == R.id.btn_close) {
+            finish();
+        }
     }
 }

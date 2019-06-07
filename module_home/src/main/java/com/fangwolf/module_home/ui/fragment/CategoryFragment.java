@@ -4,6 +4,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.fangwolf.library_base.base.BaseFragment;
@@ -32,12 +38,6 @@ import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 /**
  * @Auther 獠牙血狼
@@ -109,6 +109,7 @@ public class CategoryFragment extends BaseFragment<HomeFragmentCategoryBinding> 
                 layoutManager = new LinearLayoutManager(getContext());
                 break;
         }
+        adapter.setEmptyView(getLayoutInflater().inflate(R.layout.rv_empty, (ViewGroup) BD.recyclerView.getParent(), false));
         BD.recyclerView.setLayoutManager(layoutManager);
         BD.recyclerView.setAdapter(adapter);
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
