@@ -132,6 +132,7 @@ public class RegisterActivity extends BaseActivity<LoginActivityRegisterBinding>
     private void afterRegister(BmobUser bmobUser, BmobException e) {
         if (e == null) {
             SPUtils.getInstance().put("SESSION", bmobUser.getSessionToken());
+            // TODO: 2019/6/9 注意，新注册的号没有环信！！！ 
             ARouter.getInstance()
                     .build(RouterActivityPath.Main.MAIN)
                     .navigation();

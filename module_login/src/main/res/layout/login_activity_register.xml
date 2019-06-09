@@ -9,7 +9,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="#0ff">
+            android:background="@color/main_color_ice_blue">
 
             <ImageView
                 android:id="@+id/btn_back"
@@ -38,6 +38,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="用户名或账号"
+                android:maxLength="6"
+                android:maxLines="1"
                 android:textSize="20dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -58,6 +60,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="设置密码"
+                    android:maxLength="6"
+                    android:maxLines="1"
                     android:textSize="20dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -73,6 +77,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="确认密码"
+                    android:maxLength="6"
+                    android:maxLines="1"
                     android:textSize="20dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -125,7 +131,7 @@
             android:background="@drawable/green_ripple_round"
             android:gravity="center"
             android:text="注册"
-            android:textColor="@color/white"
+            android:textColor="@color/main_color_dark_brown"
             android:textSize="30dp" />
 
     </LinearLayout>

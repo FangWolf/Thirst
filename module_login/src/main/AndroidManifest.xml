@@ -2,7 +2,13 @@
     package="com.fangwolf.module_login">
 
     <application>
-        <activity android:name=".ui.LoginActivity"></activity>
-        <activity android:name=".ui.RegisterActivity"></activity>
+        <activity
+            android:name=".ui.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/activity.Theme"></activity>
+        <activity
+            android:name=".ui.RegisterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/activity.Theme"></activity>
     </application>
 </manifest>

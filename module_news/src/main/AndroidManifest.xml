@@ -2,7 +2,9 @@
     package="com.fangwolf.module_news">
 
     <application>
-        <activity android:name=".ui.activity.WebActivity"
-            android:theme="@style/activity.Theme"/>
+        <activity
+            android:name=".ui.activity.WebActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/activity.Theme" />
     </application>
 </manifest>

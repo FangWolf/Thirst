@@ -5,8 +5,11 @@ import android.content.Intent;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.fangwolf.library_base.base.BaseFragment;
+import com.fangwolf.library_base.router.RouterActivityPath;
 import com.fangwolf.library_base.router.RouterFragmentPath;
+import com.fangwolf.library_base.utils.SPUtils;
 import com.fangwolf.library_base.utils.ToastUtils;
 import com.fangwolf.module_mine.R;
 import com.fangwolf.module_mine.databinding.MineFragmentMineBinding;
@@ -41,7 +44,16 @@ public class MineFragment extends BaseFragment<MineFragmentMineBinding> {
         } else if (view.getId() == R.id.btn_clean) {
             ToastUtils.showShort("清理成功");
         } else if (view.getId() == R.id.btn_logout) {
-            ToastUtils.showShort("退出登录");
+            logout();
         }
+    }
+
+    private void logout() {
+        SPUtils.getInstance().clear();
+        getActivity().finish();
+        ARouter.getInstance()
+                .build(RouterActivityPath.Login.LOGIN)
+                .navigation();
+        ToastUtils.showShort("退出登录");
     }
 }

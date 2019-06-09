@@ -22,7 +22,10 @@ import com.orhanobut.logger.Logger;
 public class SplashActivity extends BaseActivity<MainActivitySplashBinding> {
     private RxTimer rxTimer;
     // TODO: 2019/3/25
-    private boolean canAutoLogin = true;
+    private boolean canAutoLogin = false;
+    private String userName = "";
+    private String user = "";
+    private String pass = "";
 
     @Override
     protected int setLayoutID() {
@@ -33,6 +36,22 @@ public class SplashActivity extends BaseActivity<MainActivitySplashBinding> {
     protected void initView(Bundle savedInstanceState) {
         if (!SPUtils.getInstance().getString("SESSION").isEmpty()) {
             canAutoLogin = true;
+            userName = SPUtils.getInstance().getString("USER_NAME");
+            switch (userName) {
+                case "123456":
+                    user = "0001";
+                    pass = "123456";
+                    break;
+                case "654321":
+                    user = "0002";
+                    pass = "654321";
+                    break;
+                default:
+                    user = "0003";
+                    pass = "215216";
+                    break;
+
+            }
         }
     }
 
@@ -50,27 +69,27 @@ public class SplashActivity extends BaseActivity<MainActivitySplashBinding> {
             }
         });
         rxTimer.start();
-        // TODO: 2019/4/16 方便测试
-//        EMClient.getInstance().login("0002 ", "123456", new EMCallBack() {
-//            @Override
-//            public void onSuccess() {
-//                Logger.e("onSuccess");
-//            }
-//
-//            @Override
-//            public void onError(int i, String s) {
-//                Logger.e("onError" + s);
-//            }
-//
-//            @Override
-//            public void onProgress(int i, String s) {
-//                Logger.e("onProgress" + s);
-//            }
-//        });
     }
 
     private void needToLogin() {
         if (canAutoLogin) {
+            // TODO: 2019/4/16 环信账号和用户账号没有绑定
+            EMClient.getInstance().login(user, pass, new EMCallBack() {
+                @Override
+                public void onSuccess() {
+                    Logger.e("onSuccess");
+                }
+
+                @Override
+                public void onError(int i, String s) {
+                    Logger.e("onError" + s);
+                }
+
+                @Override
+                public void onProgress(int i, String s) {
+                    Logger.e("onProgress" + s);
+                }
+            });
             ARouter.getInstance()
                     .build(RouterActivityPath.Main.MAIN)
                     .navigation();

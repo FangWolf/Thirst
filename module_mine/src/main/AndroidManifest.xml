@@ -5,6 +5,7 @@
     <application>
         <activity
             android:name=".ui.AboutActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/activity.Theme"></activity>
     </application>
 </manifest>

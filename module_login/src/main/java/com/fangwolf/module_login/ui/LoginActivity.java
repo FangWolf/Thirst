@@ -12,6 +12,8 @@ import com.fangwolf.library_base.utils.SPUtils;
 import com.fangwolf.library_base.utils.ToastUtils;
 import com.fangwolf.module_login.R;
 import com.fangwolf.module_login.databinding.LoginActivityLoginBinding;
+import com.hyphenate.EMCallBack;
+import com.hyphenate.chat.EMClient;
 import com.orhanobut.logger.Logger;
 
 import cn.bmob.v3.BmobUser;
@@ -26,6 +28,8 @@ import cn.bmob.v3.listener.UpdateListener;
  */
 @Route(path = RouterActivityPath.Login.LOGIN)
 public class LoginActivity extends BaseActivity<LoginActivityLoginBinding> {
+    private String user = "";
+    private String pass = "";
 
     @Override
     protected int setLayoutID() {
@@ -85,8 +89,39 @@ public class LoginActivity extends BaseActivity<LoginActivityLoginBinding> {
 
     private void afterLogin(BmobUser bmobUser, BmobException e) {
         dismissLoading();
+        switch (BD.etUserName.getText().toString().trim()) {
+            case "123456":
+                user = "0001";
+                pass = "123456";
+                break;
+            case "654321":
+                user = "0002";
+                pass = "654321";
+                break;
+            default:
+                user = "0003";
+                pass = "215216";
+                break;
+        }
+        EMClient.getInstance().login(user, pass, new EMCallBack() {
+            @Override
+            public void onSuccess() {
+                Logger.e("onSuccess");
+            }
+
+            @Override
+            public void onError(int i, String s) {
+                Logger.e("onError" + s);
+            }
+
+            @Override
+            public void onProgress(int i, String s) {
+                Logger.e("onProgress" + s);
+            }
+        });
         if (e == null) {
             SPUtils.getInstance().put("SESSION", bmobUser.getSessionToken());
+            SPUtils.getInstance().put("USER_NAME", BD.etUserName.getText().toString().trim());
             ARouter.getInstance()
                     .build(RouterActivityPath.Main.MAIN)
                     .navigation();

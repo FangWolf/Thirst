@@ -22,7 +22,6 @@ android {
 
 dependencies {
     api project(':library_base')
-    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
+    api project(':library_easeui')
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
 }

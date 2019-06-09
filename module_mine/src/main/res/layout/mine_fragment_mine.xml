@@ -24,38 +24,16 @@
                     android:layout_gravity="center_vertical"
                     android:src="@mipmap/ic_mine" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/tv_user_name"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="120dp"
-                    android:orientation="vertical">
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="150dp"
+                    android:text="FangWolf"
+                    android:textColor="@color/main_text_color"
+                    android:textSize="25dp" />
 
-                    <TextView
-                        android:id="@+id/tv_user_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="FangWolf"
-                        android:textColor="@color/main_text_color"
-                        android:textSize="20dp" />
-
-                    <TextView
-                        android:id="@+id/tv_learn_time"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="学习时长：666小时"
-                        android:textColor="@color/main_text_color"
-                        android:textSize="15dp"
-                        android:visibility="gone" />
-
-                    <TextView
-                        android:id="@+id/tv_level"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="高级会员"
-                        android:textColor="@color/main_text_color"
-                        android:textSize="15dp"
-                        android:visibility="gone" />
-                </LinearLayout>
             </FrameLayout>
 
             <FrameLayout
