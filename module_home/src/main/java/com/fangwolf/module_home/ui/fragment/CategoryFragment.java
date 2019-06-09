@@ -139,22 +139,22 @@ public class CategoryFragment extends BaseFragment<HomeFragmentCategoryBinding> 
     private View getHeaderView() {
         View view = getLayoutInflater().inflate(R.layout.home_head, (ViewGroup) BD.recyclerView.getParent(), false);
         imgList = new ArrayList<>();
-        imgList.add("https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1500389290,3668597033&fm=26&gp=0.jpg");
-        imgList.add("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2422983490,2140954611&fm=26&gp=0.jpg");
-        imgList.add("https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=915593634,1630526971&fm=26&gp=0.jpg");
+        imgList.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1560408836&di=ef2bbe3b1b1ec1306c37c290bfe265c6&imgtype=jpg&er=1&src=http%3A%2F%2Fs11.51cto.com%2Fimages%2F201810%2F29%2F7a1dacafe32ea49b784334dbd86abb91.png");
+        imgList.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1559813839341&di=f147a1ce3a4eb80881ed0a051bb4da26&imgtype=0&src=http%3A%2F%2Fimg.haokecheng.com%2Fupimages%2F4B%2FF6%2F83%2F70%2F1E5AFE1B.jpg");
+        imgList.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1559814020422&di=f1133fcdf080a70f878a9923faeccf24&imgtype=0&src=http%3A%2F%2Ft.elecfans.com%2FPublic%2FUpload%2FComImg%2F20181119%2F5bf2490f14c33.jpg");
         Banner banner = view.findViewById(R.id.banner);
         banner.setImages(imgList)
                 .setImageLoader(new GlideImageLoader())
                 .isAutoPlay(true)
                 .setDelayTime(3000)
                 .setIndicatorGravity(BannerConfig.RIGHT)
-                .setOnBannerListener(new OnBannerListener() {
-                    @Override
-                    public void OnBannerClick(int position) {
-                        ToastUtils.showShort(position);
-                    }
-                })
                 .start();
+//                .setOnBannerListener(new OnBannerListener() {
+//                    @Override
+//                    public void OnBannerClick(int position) {
+//                        ToastUtils.showShort(position);
+//                    }
+//                })
         return view;
     }
 

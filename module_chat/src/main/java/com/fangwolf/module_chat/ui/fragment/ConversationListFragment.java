@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 
+import com.fangwolf.module_chat.R;
 import com.fangwolf.module_chat.ui.activity.ChatActivity;
 import com.hyphenate.chat.EMConversation;
 import com.hyphenate.easeui.Constant;
@@ -15,6 +16,22 @@ import com.hyphenate.easeui.ui.EaseConversationListFragment;
  * @Desc 会话列表
  */
 public class ConversationListFragment extends EaseConversationListFragment {
+
+    setTitleBarClickListener listener;
+
+    @Override
+    protected void initView() {
+        super.initView();
+        titleBar = getView().findViewById(R.id.title_bar);
+        titleBar.setLeftLayoutClickListener(null);
+        titleBar.setRightLayoutClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.OnRightClickListener(v);
+            }
+        });
+    }
+
     @Override
     protected void setUpView() {
         super.setUpView();
@@ -26,5 +43,13 @@ public class ConversationListFragment extends EaseConversationListFragment {
                 startActivity(new Intent(getActivity(), ChatActivity.class).putExtra(Constant.EXTRA_USER_ID, username));
             }
         });
+    }
+
+    public void setListener(setTitleBarClickListener listener) {
+        this.listener = listener;
+    }
+
+    interface setTitleBarClickListener {
+        void OnRightClickListener(View v);
     }
 }

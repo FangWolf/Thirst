@@ -48,8 +48,11 @@ public abstract class BaseDialog<BindingType extends ViewDataBinding> extends Di
         window.setGravity(Gravity.CENTER);
         //背景透明
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        initView();
     }
 
     public abstract int setLayoutID();
+
+    public abstract void initView();
 
 }

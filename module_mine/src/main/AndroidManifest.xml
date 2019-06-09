@@ -1,5 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.fangwolf.module_mine">
 
-    <application></application>
+
+    <application>
+        <activity
+            android:name=".ui.AboutActivity"
+            android:theme="@style/activity.Theme"></activity>
+    </application>
 </manifest>
