@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.bumptech.glide.Glide;
 import com.fangwolf.library_base.base.BaseFragment;
 import com.fangwolf.library_base.router.RouterActivityPath;
 import com.fangwolf.library_base.router.RouterFragmentPath;
@@ -34,7 +35,7 @@ public class MineFragment extends BaseFragment<MineFragmentMineBinding> {
 
     @Override
     public void initData() {
-
+        BD.tvUserName.setText(SPUtils.getInstance().getString("USER_NAME"));
     }
 
     @Override
@@ -42,6 +43,12 @@ public class MineFragment extends BaseFragment<MineFragmentMineBinding> {
         if (view.getId() == R.id.btn_about) {
             startActivity(new Intent(getContext(), AboutActivity.class));
         } else if (view.getId() == R.id.btn_clean) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    Glide.get(getContext()).clearDiskCache();
+                }
+            }).start();
             ToastUtils.showShort("清理成功");
         } else if (view.getId() == R.id.btn_logout) {
             logout();

@@ -137,6 +137,8 @@ public class EaseNotifier {
             notificationNum++;
             fromUsers.add(message.getFrom());
             handleMessage(message);
+        } else {
+            vibrateAndPlayTone(message);
         }
     }
 

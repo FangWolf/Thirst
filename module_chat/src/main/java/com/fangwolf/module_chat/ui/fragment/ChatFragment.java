@@ -2,18 +2,13 @@ package com.fangwolf.module_chat.ui.fragment;
 
 
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.fangwolf.library_base.base.BaseFragment;
 import com.fangwolf.library_base.router.RouterFragmentPath;
-import com.fangwolf.library_base.utils.ToastUtils;
 import com.fangwolf.module_chat.R;
 import com.fangwolf.module_chat.databinding.ChatFragmentChatBinding;
 import com.fangwolf.module_chat.ui.AddFriendDialog;
-import com.hyphenate.easeui.widget.EaseTitleBar;
 
 /**
  * @Auther 獠牙血狼

@@ -1,7 +1,6 @@
 package com.fangwolf.module_chat.ui;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.view.View;
 
 import com.fangwolf.library_base.base.BaseDialog;
@@ -9,6 +8,7 @@ import com.fangwolf.library_base.utils.ToastUtils;
 import com.fangwolf.module_chat.R;
 import com.fangwolf.module_chat.databinding.ChatAddFriendDialogBinding;
 import com.hyphenate.chat.EMClient;
+import com.hyphenate.chat.EMMessage;
 import com.hyphenate.exceptions.HyphenateException;
 
 /**
@@ -60,6 +60,9 @@ public class AddFriendDialog extends BaseDialog<ChatAddFriendDialogBinding> impl
             try {
                 EMClient.getInstance().contactManager().addContact(friendName, "fangwolf");
                 ToastUtils.showShort("好友请求已发送");
+                //发送消息
+                EMMessage message = EMMessage.createTxtSendMessage("很高兴认识你", friendName);
+                EMClient.getInstance().chatManager().sendMessage(message);
                 dismiss();
             } catch (HyphenateException e) {
                 e.printStackTrace();
